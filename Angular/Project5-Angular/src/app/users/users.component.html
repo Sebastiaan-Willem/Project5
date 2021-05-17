@@ -1,1 +1,17 @@
-<p>users works!</p>
+<h2>Members</h2>
+
+<div>
+    <label for="new-user">User name: </label>
+    <input for="new-user" type="text" #userName/>
+
+    <button class="add-button" (click)="addUser(userName.value); userName.value=''">Add user</button>
+</div>
+
+<ul class="users">
+    <li *ngFor="let user of users">
+        <a routerLink="/detail/{{user.id}}">
+            <span class="id">{{user.id}}</span>{{user.userName}}
+        </a>
+        <button class="delete-button" (click)="deleteUser(user)">X</button>
+    </li>
+</ul>
