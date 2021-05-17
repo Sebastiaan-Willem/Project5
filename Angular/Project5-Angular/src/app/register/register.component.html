@@ -1,1 +1,38 @@
-<p>register works!</p>
+<form [formGroup]="registerUser" (ngSubmit)="register()" autocomplete="off">
+    <h2 class="text-center text-primary">Sign up</h2>
+    <div class="form-group">
+        <input type="text" [class.is-invalid]="registerUser.get('name')?.errors && registerUser.get('name')?.touched"
+            class="form-control" name="name" formControlName="name" placeholder="Username" />
+        <div class="invalid-feedback">
+            Please enter a username.
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="password"
+            [class.is-invalid]="registerUser.get('password')?.errors && registerUser.get('password')?.touched"
+            class="form-control" name="password" formControlName="password" placeholder="Password" />
+        <div *ngIf="registerUser.get('password')?.hasError('required')" class="invalid-feedback">
+            Please enter a password.
+        </div>
+        <div *ngIf="registerUser.get('password')?.hasError('minlength')" class="invalid-feedback">
+            Password must be at least 4 characters.
+        </div>
+        <div *ngIf="registerUser.get('password')?.hasError('maxlength')" class="invalid-feedback">
+            Password can't be longer than 8 characters.
+        </div>
+        <div *ngIf="validationErrors.length > 0">
+            <ul class="test-danger">
+                <li *ngFor="let error of validationErrors">
+                    {{ error }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group text-center">
+        <!-- <button [disabled]="!registerUser.valid" class="btn btn-success mr-2" type="submit">Register</button> -->
+        <button class="btn btn-success mr-2" type="submit">Register</button>
+    </div>
+</form>
+
+<p>Form value: {{registerUser.value | json}}</p>
+<p>Form status: {{registerUser.status | json}}</p>
