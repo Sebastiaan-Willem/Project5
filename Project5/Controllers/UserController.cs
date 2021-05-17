@@ -50,7 +50,7 @@ namespace Project5.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Update(User user)
+        public async Task<ActionResult> UpdateUser(User user)
         {
             await _service.UpdateUserAsync(user);
             return Ok("User is up to date"); 

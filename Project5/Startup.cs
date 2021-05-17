@@ -42,7 +42,9 @@ namespace Project5
             });
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IPostService, PostService>();
 
         }
 
