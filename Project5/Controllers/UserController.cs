@@ -45,8 +45,7 @@ namespace Project5.Controllers
         public async Task<ActionResult> DeleteUser(int id)
         {
             await _service.DeleteUserAsync(id);
-            return Ok("User deleted");
-            //let's try it
+            return Ok("User deleted");            
         }
 
         [HttpPut]

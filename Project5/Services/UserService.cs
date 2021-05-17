@@ -26,10 +26,11 @@ namespace Project5.Services
             return await _repo.GetUserAsync(id);
         }
 
-        public async Task AddUserAsync(User user)
-        {
-            await _repo.AddUserAsync(user);
-        }
+        //Zie AccountService
+        //public async Task AddUserAsync(User user)
+        //{
+        //    await _repo.AddUserAsync(user);
+        //}
 
         public async Task DeleteUserAsync(int id)
         {

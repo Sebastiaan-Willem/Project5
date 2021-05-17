@@ -6,7 +6,6 @@ namespace Project5.Services
 {
     public interface IUserService
     {
-        Task AddUserAsync(User user);
         Task DeleteUserAsync(int id);
         Task<User> GetUserAsync(int id);
         Task<List<User>> GetUsersAsync();

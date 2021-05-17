@@ -6,7 +6,6 @@ namespace Project5.Repositories
 {
     public interface IUserRepository
     {
-        Task AddUserAsync(User user);
         Task DeleteUserAsync(int id);
         Task<User> GetUserAsync(int id);
         Task<List<User>> GetUsersAsync();

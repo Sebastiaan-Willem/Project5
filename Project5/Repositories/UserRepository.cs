@@ -18,9 +18,10 @@ namespace Project5.Repositories
 
         public async Task<List<User>> GetUsersAsync()
         {
-            return await _context.Users
+            var users = await _context.Users
                                  .Include(x => x.Posts)
                                  .ToListAsync();
+            return users;
         }
 
         public async Task<User> GetUserAsync(int id)
@@ -30,11 +31,11 @@ namespace Project5.Repositories
                                  .FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task AddUserAsync(User user)
-        {
-            await _context.Users.AddAsync(user);
-            await _context.SaveChangesAsync();
-        }
+        //public async Task AddUserAsync(User user)
+        //{
+        //    await _context.Users.AddAsync(user);
+        //    await _context.SaveChangesAsync();
+        //}
 
         public async Task DeleteUserAsync(int id)
         {
