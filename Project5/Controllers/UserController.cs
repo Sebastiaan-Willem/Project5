@@ -34,13 +34,6 @@ namespace Project5.Controllers
             return Ok(user);
         }
 
-        [HttpPost]
-        public async Task<ActionResult> AddUser(User user)
-        {
-            await _service.AddUserAsync(user);
-            return Created("", null);
-        }
-
         [HttpDelete]
         public async Task<ActionResult> DeleteUser(int id)
         {

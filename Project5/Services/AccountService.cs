@@ -1,4 +1,5 @@
-﻿using Project5.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Project5.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,34 @@ namespace Project5.Services
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<User> LoginAsync(string name, string password)
+        {
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.Name == name);
+
+            if (user == null)
+            {
+                throw new UnauthorizedAccessException("Invalid Username/Password");
+            }
+
+            using var hmac = new HMACSHA512(user.PasswordSalt);
+            var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+            for (int i = 0; i < hash.Length; i++)
+            {
+                if (hash[i] != user.PasswordHash[i])
+                {
+                    throw new UnauthorizedAccessException("Invalid Username/Password");
+                }
+            }
+
+            return user;
+        }
+
+        public async Task<bool> UserExists(string name)
+        {
+            return await _context.Users.AnyAsync(x => x.Name == name.ToLower());
         }
     }
 }

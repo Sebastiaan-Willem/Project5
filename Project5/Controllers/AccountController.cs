@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Project5.DTO;
+using Project5.Entities;
 using Project5.Services;
 using System;
 using System.Collections.Generic;
@@ -23,13 +24,28 @@ namespace Project5.Controllers
         [HttpPost("Register")]
         public async Task<ActionResult> Register(RegisterDTO dto)
         {
-            //if()
-            //{
-
-            //}
+            if (await _service.UserExists(dto.Name))
+            {
+                return BadRequest("User already exist");
+            }
             await _service.RegisterAsync(dto.Name, dto.Password);
 
             return Created("", null);
+        }
+
+        [HttpPost("Login")]
+        public async Task<ActionResult<User>> LoginAsync(LoginDTO dto)
+        {
+            try
+            {
+                var user = await _service.LoginAsync(dto.Name, dto.Password);
+
+                return user;
+            }
+            catch(UnauthorizedAccessException e)
+            {
+                return Unauthorized(e.Message);
+            }
         }
 
     }
