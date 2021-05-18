@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Project5.Entities;
 using Project5.Services;
@@ -11,6 +12,7 @@ namespace Project5.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PostController : ControllerBase
     {
         private IPostService _service;
@@ -21,6 +23,7 @@ namespace Project5.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Post>>> GetAllPosts()
         {
             var posts = await _service.GetPostsAsync();
@@ -28,6 +31,7 @@ namespace Project5.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Post>> GetPost(int id)
         {
             var post = await _service.GetPostAsync(id);
