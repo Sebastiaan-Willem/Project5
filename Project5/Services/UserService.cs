@@ -1,4 +1,6 @@
-﻿using Project5.Entities;
+﻿using AutoMapper;
+using Project5.DTO;
+using Project5.Entities;
 using Project5.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,27 +12,27 @@ namespace Project5.Services
     public class UserService : IUserService
     {
         private IUserRepository _repo;
+        private IMapper _mapper;
 
-        public UserService(IUserRepository repo)
+        public UserService(IUserRepository repo, IMapper mapper)
         {
             _repo = repo;
+            _mapper = mapper;
         }
-
-        public async Task<List<User>> GetUsersAsync()
+      
+        public async Task<ICollection<UserDTO>> GetUsersAsync()
         {
-            return await _repo.GetUsersAsync();
+            List<User> users = await _repo.GetUsersAsync();
+            List<UserDTO> usersDTO = _mapper.Map<List<UserDTO>>(users);
+            return usersDTO;
         }
 
-        public async Task<User> GetUserAsync(int id)
+        public async Task<UserDTO> GetUserAsync(int id)
         {
-            return await _repo.GetUserAsync(id);
+            User user = await _repo.GetUserAsync(id);
+            UserDTO userDTO = _mapper.Map<UserDTO>(user);
+            return userDTO;
         }
-
-        //Zie AccountService
-        //public async Task AddUserAsync(User user)
-        //{
-        //    await _repo.AddUserAsync(user);
-        //}
 
         public async Task DeleteUserAsync(int id)
         {
@@ -42,5 +44,7 @@ namespace Project5.Services
         {
             await _repo.UpdateUserAsync(user);
         }
+
+
     }
 }

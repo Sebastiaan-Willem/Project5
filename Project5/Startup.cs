@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Project5.Helpers;
 using Project5.Repositories;
 using Project5.Services;
 using System;
@@ -60,6 +61,8 @@ namespace Project5
             {
                 x.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString"));
             });
+
+            services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPostRepository, PostRepository>();

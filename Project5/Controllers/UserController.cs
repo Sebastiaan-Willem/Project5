@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Project5.DTO;
 using Project5.Entities;
 using Project5.Services;
 using System;
@@ -23,14 +24,15 @@ namespace Project5.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
+        [AllowAnonymous]
+        public async Task<ActionResult<IEnumerable<UserDTO>>> GetAllUsers()
         {
             var users = await _service.GetUsersAsync();
             return Ok(users);
         }
 
         [HttpGet ("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<UserDTO>> GetUser(int id)
         {
             var user = await _service.GetUserAsync(id);
             return Ok(user);
