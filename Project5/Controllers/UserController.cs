@@ -13,7 +13,7 @@ namespace Project5.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class UserController : ControllerBase
     {
         private IUserService _service;
@@ -50,6 +50,14 @@ namespace Project5.Controllers
         {
             await _service.UpdateUserAsync(user);
             return Ok("User is up to date"); 
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<ActionResult> AddUser(User user)
+        {
+            await _service.AddUserAsync(user);
+            return Created("User Created", null);
         }
     }
 }

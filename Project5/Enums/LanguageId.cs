@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Project5.Enums
 {
-    public enum Languages
+    public enum LanguageId
     {
-        DefaultLanguage = 0,
+        //DefaultLanguage = 0,
         Csharp = 1, 
         Cplusplus=2,
         Java=3,

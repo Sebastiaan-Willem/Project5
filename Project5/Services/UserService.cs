@@ -45,6 +45,11 @@ namespace Project5.Services
             await _repo.UpdateUserAsync(user);
         }
 
+        public async Task AddUserAsync(User user)
+        {
+            await _repo.AddUser(user);
+        }
+
 
     }
 }

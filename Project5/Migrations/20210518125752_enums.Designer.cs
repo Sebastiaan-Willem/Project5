@@ -3,113 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project5;
 
 namespace Project5.Migrations
 {
     [DbContext(typeof(ProjectVContext))]
-    partial class ProjectVContextModelSnapshot : ModelSnapshot
+    [Migration("20210518125752_enums")]
+    partial class enums
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("LanguageUser", b =>
-                {
-                    b.Property<int>("LanguagesLanguageId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UsersId")
-                        .HasColumnType("int");
-
-                    b.HasKey("LanguagesLanguageId", "UsersId");
-
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("LanguageUser");
-                });
-
-            modelBuilder.Entity("Project5.Entities.Language", b =>
-                {
-                    b.Property<int>("LanguageId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("LanguageId");
-
-                    b.ToTable("Languages");
-
-                    b.HasData(
-                        new
-                        {
-                            LanguageId = 1,
-                            Name = "Csharp"
-                        },
-                        new
-                        {
-                            LanguageId = 2,
-                            Name = "Cplusplus"
-                        },
-                        new
-                        {
-                            LanguageId = 3,
-                            Name = "Java"
-                        },
-                        new
-                        {
-                            LanguageId = 4,
-                            Name = "Pyhton"
-                        },
-                        new
-                        {
-                            LanguageId = 5,
-                            Name = "Html"
-                        },
-                        new
-                        {
-                            LanguageId = 6,
-                            Name = "CSS"
-                        },
-                        new
-                        {
-                            LanguageId = 7,
-                            Name = "Javascript"
-                        },
-                        new
-                        {
-                            LanguageId = 8,
-                            Name = "Typescript"
-                        },
-                        new
-                        {
-                            LanguageId = 9,
-                            Name = "Swift"
-                        },
-                        new
-                        {
-                            LanguageId = 10,
-                            Name = "React"
-                        },
-                        new
-                        {
-                            LanguageId = 11,
-                            Name = "SQL"
-                        },
-                        new
-                        {
-                            LanguageId = 12,
-                            Name = "XML"
-                        });
-                });
 
             modelBuilder.Entity("Project5.Entities.Post", b =>
                 {
@@ -165,8 +75,9 @@ namespace Project5.Migrations
                     b.Property<bool>("IsVerified")
                         .HasColumnType("bit");
 
-                    b.Property<int>("LanguageIds")
-                        .HasColumnType("int");
+                    b.Property<string>("Language")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("LastModified")
                         .HasColumnType("datetime2");
@@ -187,21 +98,6 @@ namespace Project5.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("LanguageUser", b =>
-                {
-                    b.HasOne("Project5.Entities.Language", null)
-                        .WithMany()
-                        .HasForeignKey("LanguagesLanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Project5.Entities.User", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Project5.Entities.Post", b =>

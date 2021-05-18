@@ -11,5 +11,6 @@ namespace Project5.Services
         Task<UserDTO> GetUserAsync(int id);
         Task<ICollection<UserDTO>> GetUsersAsync();
         Task UpdateUserAsync(User user);
+        Task AddUserAsync(User user);
     }
 }
