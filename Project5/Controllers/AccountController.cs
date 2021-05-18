@@ -34,11 +34,11 @@ namespace Project5.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<ActionResult<User>> LoginAsync(LoginDTO dto)
+        public async Task<ActionResult<UserTokenDTO>> LoginAsync(LoginDTO dto)
         {
             try
             {
-                var user = await _service.LoginAsync(dto.Name, dto.Password);
+                UserTokenDTO user = await _service.LoginAsync(dto.Name, dto.Password);
 
                 return user;
             }

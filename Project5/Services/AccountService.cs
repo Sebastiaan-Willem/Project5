@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Project5.DTO;
 using Project5.Entities;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,15 @@ namespace Project5.Services
     public class AccountService : IAccountService
     {
         private ProjectVContext _context;
+        private ITokenService _tokenService;
 
-        public AccountService(ProjectVContext context)
+        public AccountService(ProjectVContext context, ITokenService tokenService)
         {
             _context = context;
+            _tokenService = tokenService;
         }
 
-        public async Task RegisterAsync(string username, string password)
+        public async Task<UserTokenDTO> RegisterAsync(string username, string password)
         {
             using var hmac = new HMACSHA512();
 
@@ -31,9 +34,15 @@ namespace Project5.Services
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+
+            return new UserTokenDTO
+            {
+                Name = user.Name,
+                Token = _tokenService.CreateToken(user)
+            };
         }
 
-        public async Task<User> LoginAsync(string name, string password)
+        public async Task<UserTokenDTO> LoginAsync(string name, string password)
         {
             var user = await _context.Users.SingleOrDefaultAsync(x => x.Name == name);
 
@@ -53,7 +62,11 @@ namespace Project5.Services
                 }
             }
 
-            return user;
+            return new UserTokenDTO
+            {
+                Name = user.Name,
+                Token = _tokenService.CreateToken(user)
+            };
         }
 
         public async Task<bool> UserExists(string name)
