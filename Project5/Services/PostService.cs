@@ -1,4 +1,6 @@
-﻿using Project5.Entities;
+﻿using AutoMapper;
+using Project5.DTO;
+using Project5.Entities;
 using Project5.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,20 +12,28 @@ namespace Project5.Services
     public class PostService : IPostService
     {
         private IPostRepository _repo;
+        private IMapper _mapper;
 
-        public PostService(IPostRepository repo)
+        public PostService(IPostRepository repo, IMapper mapper)
         {
             _repo = repo;
+            _mapper = mapper;
         }
 
-        public async Task<List<Post>> GetPostsAsync()
+        public async Task<List<PostDTO>> GetPostsAsync()
         {
-            return await _repo.GetPostsAsync();
+            List<Post> posts = await _repo.GetPostsAsync();
+            List<PostDTO> postsDTO = _mapper.Map<List<PostDTO>>(posts);
+
+            return postsDTO;
         }
 
-        public async Task<Post> GetPostAsync(int id)
+        public async Task<PostDTO> GetPostAsync(int id)
         {
-            return await _repo.GetPostAsync(id);
+            Post post = await _repo.GetPostAsync(id);
+            PostDTO postDTO = _mapper.Map<PostDTO>(post);
+
+            return postDTO;
         }
 
         public async Task AddPostAsync(Post user)

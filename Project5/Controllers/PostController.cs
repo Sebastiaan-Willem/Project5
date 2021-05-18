@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Project5.DTO;
 using Project5.Entities;
 using Project5.Services;
 using System;
@@ -24,7 +25,7 @@ namespace Project5.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<Post>>> GetAllPosts()
+        public async Task<ActionResult<IEnumerable<PostDTO>>> GetAllPosts()
         {
             var posts = await _service.GetPostsAsync();
             return Ok(posts);
@@ -32,7 +33,7 @@ namespace Project5.Controllers
 
         [HttpGet("{id}")]
         [AllowAnonymous]
-        public async Task<ActionResult<Post>> GetPost(int id)
+        public async Task<ActionResult<PostDTO>> GetPost(int id)
         {
             var post = await _service.GetPostAsync(id);
             return Ok(post);

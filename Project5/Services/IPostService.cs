@@ -1,4 +1,5 @@
-﻿using Project5.Entities;
+﻿using Project5.DTO;
+using Project5.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,8 +9,8 @@ namespace Project5.Services
     {
         Task AddPostAsync(Post user);
         Task DeletePostAsync(int id);
-        Task<Post> GetPostAsync(int id);
-        Task<List<Post>> GetPostsAsync();
+        Task<PostDTO> GetPostAsync(int id);
+        Task<List<PostDTO>> GetPostsAsync();
         Task UpdatePostAsync(Post user);
     }
 }

@@ -16,6 +16,6 @@ namespace Project5.DTO
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime LastModified { get; set; } = DateTime.Now;
         public bool IsVerified { get; set; }
-        public ICollection<Post> Posts { get; set; }
+        public ICollection<PostDTO> Posts { get; set; }
     }
 }

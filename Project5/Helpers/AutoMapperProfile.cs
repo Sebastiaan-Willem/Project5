@@ -13,6 +13,7 @@ namespace Project5.Helpers
         public AutoMapperProfile()
         {
             CreateMap<User, UserDTO>();
+            CreateMap<Post, PostDTO>();
         }
     }
 }
