@@ -3,3 +3,26 @@
     height: 55px;
     margin-top: -6px;
 }
+.navbar-nav{
+    margin-right: auto;
+}
+.btn{
+    margin-right: .5rem;
+}
+
+.btn-grad {background-image: linear-gradient(to right, #F2C94C 0%, #F2994A  51%, #F2C94C  100%)}
+.btn-grad {
+   margin: 10px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;
+   border-radius: 10px;
+ }
+
+ .btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
