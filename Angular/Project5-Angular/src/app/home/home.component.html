@@ -1,9 +1,11 @@
+<div class="logo-div">
+    <img src="https://img-premium.flaticon.com/png/512/3190/3190461.png?token=exp=1621327171~hmac=e80f5d6477e3358cefef14c8ec3d5563" class="d-inline-block align-top logo" alt="">
+</div>
 <h2>Sign in</h2>
-
 <form #loginForm="ngForm" class="login" (ngSubmit)="login()" autocomplete="off">
     <input class="form-control me-2" name="username" [(ngModel)]="model.name" type="text" placeholder="UserName" />
     <input class="form-control me-2" name="password" [(ngModel)]="model.password" type="password" placeholder="Password" />
-    <button class="btn btn-outline-success" type="submit" >Login</button>
+    <button class="btn btn-grad" type="submit" >Login</button>
 </form>
 
-<p class="register">Not a member yet? Register <a routerLink="register">here</a></p>
+<p class="register">Not a member yet? Register <a class="register-link" routerLink="register">here</a></p>
