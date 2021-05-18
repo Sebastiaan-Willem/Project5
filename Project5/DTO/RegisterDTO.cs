@@ -8,9 +8,12 @@ namespace Project5.DTO
 {
     public class RegisterDTO
     {
-        [Required]
+        [Required]        
         public string Name { get; set; }
+
         [Required]
+        [MinLength(8)]
+        [MaxLength(16)]
         public string Password { get; set; }
     }
 }
