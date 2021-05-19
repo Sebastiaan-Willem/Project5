@@ -2,8 +2,6 @@
 using Project5.DTO;
 using Project5.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +35,7 @@ namespace Project5.Services
 
             return new UserTokenDTO
             {
+                Id = user.Id,
                 Name = user.Name,
                 Token = _tokenService.CreateToken(user)
             };
