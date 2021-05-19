@@ -64,6 +64,7 @@ namespace Project5.Services
 
             return new UserTokenDTO
             {
+                Id = user.Id,
                 Name = user.Name,
                 Token = _tokenService.CreateToken(user)
             };

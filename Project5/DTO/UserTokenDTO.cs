@@ -7,6 +7,7 @@ namespace Project5.DTO
 {
     public class UserTokenDTO
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Token { get; set; }
     }
