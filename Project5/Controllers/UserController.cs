@@ -32,6 +32,7 @@ namespace Project5.Controllers
         }
 
         [HttpGet ("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<UserDTO>> GetUser(int id)
         {
             var user = await _service.GetUserAsync(id);
