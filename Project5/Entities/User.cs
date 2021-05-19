@@ -22,7 +22,7 @@ namespace Project5.Entities
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime LastModified { get; set; } = DateTime.Now;
         public bool IsVerified { get; set; }
-        //public ICollection<Languages> Languages { get; set; }
+        public ICollection<Language> Languages { get; set; }
         public ICollection<Post> Posts { get; set; }
     }
 }

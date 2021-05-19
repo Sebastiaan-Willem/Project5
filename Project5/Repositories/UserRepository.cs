@@ -20,6 +20,7 @@ namespace Project5.Repositories
         {
             var users = await _context.Users
                                  .Include(x => x.Posts)
+                                 .Include(x => x.Languages)
                                  .ToListAsync();
             return users;
         }
@@ -28,6 +29,7 @@ namespace Project5.Repositories
         {
             return await _context.Users
                                  .Include(x => x.Posts)
+                                 .Include(x => x.Languages)
                                  .FirstOrDefaultAsync(x => x.Id == id);
         }
 

@@ -14,6 +14,7 @@ namespace Project5.Helpers
         {
             CreateMap<User, UserDTO>();
             CreateMap<Post, PostDTO>();
+            CreateMap<Language, LanguageDTO>();
         }
     }
 }

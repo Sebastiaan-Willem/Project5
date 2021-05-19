@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project5;
 
 namespace Project5.Migrations
 {
     [DbContext(typeof(ProjectVContext))]
-    partial class ProjectVContextModelSnapshot : ModelSnapshot
+    [Migration("20210519072944_languages")]
+    partial class languages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,9 +47,6 @@ namespace Project5.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Languages");
@@ -56,74 +55,62 @@ namespace Project5.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "C#",
-                            UserId = 0
+                            Name = "C#"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "C++",
-                            UserId = 0
+                            Name = "C++"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Java",
-                            UserId = 0
+                            Name = "Java"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Javascript",
-                            UserId = 0
+                            Name = "Javascript"
                         },
                         new
                         {
                             Id = 5,
-                            Name = "Python",
-                            UserId = 0
+                            Name = "Python"
                         },
                         new
                         {
                             Id = 6,
-                            Name = "Swift",
-                            UserId = 0
+                            Name = "Swift"
                         },
                         new
                         {
                             Id = 7,
-                            Name = "HTML",
-                            UserId = 0
+                            Name = "HTML"
                         },
                         new
                         {
                             Id = 8,
-                            Name = "CSS",
-                            UserId = 0
+                            Name = "CSS"
                         },
                         new
                         {
                             Id = 9,
-                            Name = "Typescript",
-                            UserId = 0
+                            Name = "Typescript"
                         },
                         new
                         {
                             Id = 10,
-                            Name = "React",
-                            UserId = 0
+                            Name = "React"
                         },
                         new
                         {
                             Id = 11,
-                            Name = "SQL",
-                            UserId = 0
+                            Name = "SQL"
                         },
                         new
                         {
                             Id = 12,
-                            Name = "XML",
-                            UserId = 0
+                            Name = "XML"
                         });
                 });
 
