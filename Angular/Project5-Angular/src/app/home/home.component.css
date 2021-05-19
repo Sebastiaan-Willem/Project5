@@ -231,7 +231,7 @@ nav ul li:hover > ul,
 header {
 	float: left;
 	width: 100%;
-	background-color: #e44d3a;
+	background-color: #b40042;
 }
 .header-data {
 	float: left;
@@ -278,7 +278,7 @@ header {
 .ask-question {
 	background-color: #fff;
 	padding: 10px 25px;
-	color: #e44d3a !important;
+	color: #b40042 !important;
 	font-size: 14px;
 	font-weight: 600;
 }
@@ -361,7 +361,7 @@ header {
 	border: 0;
 }
 .search-bar form button i {
-	color: #e44d3a;
+	color: #b40042;
 	font-size: 20px;
 	font-weight: bold;
 }
@@ -388,7 +388,7 @@ nav ul ul {
 	top: 100%;
 	left: 0;
 	width: 200px;
-	background-color: #e44d3a;
+	background-color: #b40042;
 	text-align: left;
 	padding: 20px 0 10px 0; 
 	opacity: 0;
@@ -488,7 +488,7 @@ nav ul ul li a {
 	text-transform: capitalize;
 	font-weight: 600;
 	text-align: center;
-	background-color: #e44d3a;
+	background-color: #b40042;
 	padding: 18px 0;
 }
 nav ul li span {
@@ -509,8 +509,8 @@ nav > ul > li > a:hover {
 .user-account {
 	float: right;
 	width: 110px;
-	border-left: 1px solid #dd3e2b;
-	border-right: 1px solid #dd3e2b;
+	border-left: 1px solid #b40042;
+	border-right: 1px solid #b40042;
 	box-sizing: border-box;
 	position: relative;
 }
@@ -597,7 +597,7 @@ nav > ul > li > a:hover {
 .search_form form button {
 	color: #f2f2f2;
 	font-size: 14px;
-	background-color: #e44d3a;
+	background-color: #b40042;
 	padding: 0 10px;
 	height: 100%;
 	position: absolute;
@@ -713,7 +713,7 @@ main {
 .username-dt {
 	float: left;
 	width: 100%;
-	background-color: #e44d3a;
+	background-color: #b40042;
 	padding-top: 40px;
 }
 .user-data {
@@ -786,7 +786,7 @@ main {
 	font-size: 20px;
 }
 .user-fw-status li a {
-	color: #e44d3a;
+	color: #b40042;
 	font-size: 14px;
 	font-weight: 600;	
 }
@@ -805,7 +805,7 @@ main {
 	width: 100%;
 	padding: 23px 20px;
 	background-color: #fff;
-	border-top: 4px solid #e44d3a;
+	border-top: 4px solid #b40042;
 	border-left: 1px solid #e4e4e4;
 	border-bottom: 1px solid #e4e4e4;
 	border-right: 1px solid #e4e4e4;
@@ -851,7 +851,7 @@ main {
 }
 .post-st ul li a:hover,
 .post-st ul li a.active {
-	background-color: #e44d3a;
+	background-color: #b40042;
 	color: #fff;
 }
 
@@ -934,7 +934,7 @@ main {
 	font-weight: 600;
 }
 .ed-opts > a:hover {
-	color: #e44d3a;
+	color: #b40042;
 }
 .usy-name {
 	float: left;
@@ -1072,7 +1072,7 @@ main {
 	margin-bottom: 20px;
 }
 .job_descp > p a {
-	color: #e44d3a;
+	color: #b40042;
 	font-weight: 600;
 }
 
