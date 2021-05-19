@@ -5,6 +5,8 @@ import { User } from '../user';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../post.service';
 import { Post } from '../post';
+import { AccountService } from '../account.service';
+import { Language } from '../language';
 
 @Component({
   selector: 'app-user-detail',
@@ -12,21 +14,28 @@ import { Post } from '../post';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-  user?: User;
+  currentUser: User = this.accountService.getCurrentUser();
+  user?: User; 
   posts: Post[] = [];
-  constructor(private userService: UserService, private postService: PostService, private location: Location, private route: ActivatedRoute) { }
+  languages: Language[] = [];
+  constructor(private userService: UserService, private accountService: AccountService, private postService: PostService, private location: Location, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getPosts();
     this.getUser();
   }
 
+  getUser(){
+    let id = this.currentUser.id;
+    this.userService.getUser(id).subscribe(x => this.user = x);
+  }
+
   getPosts():void{
     this.postService.getPosts().subscribe(x => this.posts = x)
   }
-  getUser(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.userService.getUser(id).subscribe(x => this.user = x);
+  getCurrentUser(): void {
+    // const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.currentUser = this.accountService.getCurrentUser();
   }
 
   goBack(): void {

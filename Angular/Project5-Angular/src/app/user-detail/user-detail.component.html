@@ -16,15 +16,11 @@
                                         <img src="http://placekitten.com/170/170" alt="">
                                     </div><!--user-pro-img end-->
                                     
-                                    <ul class="social_links">
-                                        <li>C#</li>
-                                        <li>ASP.NET</li>
-                                        <li>HTML</li>
-                                        <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>TypeScript</li>
-                                        <li>Python</li>
-                                        <li>Java</li>
+                                    <ul class="social_links" >
+                                        <li *ngFor="let language of languages">
+                                            <span>{{currentUser.language}}</span>
+                                        </li>
+                                        
                                     </ul>
                                 </div><!--user_profile end-->
                                 
@@ -33,7 +29,7 @@
                         <div class="col-lg-6">
                             <div class="main-ws-sec">
                                 <div class="user-tab-sec">
-                                    <h3>John Doe</h3>
+                                    <h3>{{currentUser.name}}</h3>
                                     <div class="star-descp">
                                         <span>.NET Developer</span>
                                         
