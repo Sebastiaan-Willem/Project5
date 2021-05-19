@@ -7,7 +7,7 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class UserService {
-  private usersUrl = 'https://localhost:44302/api/users';
+  private usersUrl = 'https://localhost:44305/api/users';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
