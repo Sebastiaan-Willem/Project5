@@ -1,15 +1,4 @@
-<div *ngIf="user">
-    <h2>{{user.name | uppercase}} Details</h2>
-    <div>
-        <span>Id: </span> {{user.id}}
-    </div>
-    <div>
-        <label for="user-name">User name: </label>
-        <input id="user-name" [(ngModel)]="user.name" placeholder="Enter a name" />
-    </div>
-    <button (click)="goBack()">Back</button>
-    <button (click)="save()">save</button>
-</div>
+
     <section class="cover-sec">
         <img src="http://via.placeholder.com/1600x400" alt="">
     </section>
@@ -125,4 +114,16 @@
             </div> 
         </div>
     </main>
+    <div *ngIf="user">
+        <h2>{{user.name | uppercase}} Details</h2>
+        <div>
+            <span>Id: </span> {{user.id}}
+        </div>
+        <div>
+            <label for="user-name">User name: </label>
+            <input id="user-name" [(ngModel)]="user.name" placeholder="Enter a name" />
+        </div>
+        <button (click)="goBack()">Back</button>
+        <button (click)="save()">save</button>
+    </div>
 <!-- </div> -->
