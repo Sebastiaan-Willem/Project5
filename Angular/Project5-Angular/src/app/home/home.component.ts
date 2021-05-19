@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../account.service';
+import { Post } from '../post';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-home',
@@ -7,18 +9,14 @@ import { AccountService } from '../account.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  model: any = {};
-  loggedIn: boolean = false;
-  constructor(private accountService: AccountService) { }
+  posts: Post[] = [];
+  constructor(private postService:PostService) { }
 
   ngOnInit(): void {
+    this.getPosts();
   }
-  login():void{
-    this.accountService.login(this.model)
-    .subscribe(x => {
-      this.loggedIn = true;
-    }, error =>{
-      console.log(error);
-    })
+
+  getPosts():void{
+    this.postService.getPosts().subscribe(x => this.posts = x)
   }
 }

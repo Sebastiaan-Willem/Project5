@@ -1,11 +1,105 @@
-<div class="logo-div">
-    <img src="https://img-premium.flaticon.com/png/512/3190/3190461.png?token=exp=1621327171~hmac=e80f5d6477e3358cefef14c8ec3d5563" class="d-inline-block align-top logo" alt="">
-</div>
-<h2>Sign in</h2>
-<form #loginForm="ngForm" class="login" (ngSubmit)="login()" autocomplete="off">
-    <input class="form-control me-2" name="username" [(ngModel)]="model.name" type="text" placeholder="UserName" />
-    <input class="form-control me-2" name="password" [(ngModel)]="model.password" type="password" placeholder="Password" />
-    <button class="btn btn-grad" type="submit" >Login</button>
-</form>
+<div class="wrapper">
+    <main>
+        <div class="main-section">
+            <div class="container">
+                <div class="main-section-data">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                            <div class="main-left-sidebar no-margin">
+                                <div class="user-data full-width">
+                                    <div class="user-profile">
+                                        <div class="username-dt">
+                                            <div class="usr-pic">
+                                                <img src="http://via.placeholder.com/100x100" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="user-specs">
+                                            <h3>John Doe</h3>
+                                            <span>Graphic Designer at Self Employed</span>
+                                        </div>
+                                    </div>
+                                    <ul class="user-fw-status">
+                                        <li>
+                                            <h4>Following</h4>
+                                            <span>34</span>
+                                        </li>
+                                        <li>
+                                            <h4>Followers</h4>
+                                            <span>155</span>
+                                        </li>
+                                        <li>
+                                            <a href="#" title="">View Profile</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-8 no-pd">
+                            <div class="main-ws-sec">
+                                <div class="post-topbar">
+                                    <div class="user-picy">
+                                        <!-- <img src="http://via.placeholder.com/100x100" alt=""> -->
+                                    </div>
+                                    <div class="post-st">
+                                        <input class="create-post" type="text" placeholder="Type your post here..."/>
+                                        <button class="btn btn-grad" type="submit">Make a post</button>
+                                    </div>
+                                </div>
+                                <div class="posts-section">
 
-<p class="register">Not a member yet? Register <a class="register-link" routerLink="register">here</a></p>
+                                    <div class="posts">
+                                        <ul class="post-list">
+                                            <!-- NgFor => binding user/posts-->
+                                            <li *ngFor="let post of posts" >
+                                                <div class="post-bar">
+                                                    <div class="post_topbar">
+                                                        <div class="usy-dt">
+                                                            <img src="http://via.placeholder.com/50x50" alt="">
+                                                            <div class="usy-name">
+                                                                <h3>UserName</h3>
+                                                                <span><img src="images/clock.png" alt="">Time Created</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="epi-sec">
+                                                        <ul class="descp">
+                                                            <li><img src="images/icon9.png" alt=""><span>Location => still needs to be bound</span></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="job_descp">
+                                                        <h3>{{post.title}}</h3>
+                                                        <p>{{post.content}}</p>
+                                                        <ul class="skill-tags">
+                                                            <li><a href="#" title="">Languages => still need to bind</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="process-comm">
+                                        <div class="spinner">
+                                            <div class="bounce1"></div>
+                                            <div class="bounce2"></div>
+                                            <div class="bounce3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 pd-right-none no-pd">
+                            <div class="right-sidebar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </main>
+</div>
+
+
+
+    
+
+    
