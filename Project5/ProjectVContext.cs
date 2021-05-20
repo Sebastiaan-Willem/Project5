@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Project5.Entities;
-using Project5.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +12,7 @@ namespace Project5
         public DbSet<User> Users { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<Photo> Photos { get; set; }
 
         public ProjectVContext(DbContextOptions options):base(options)
         {
