@@ -18,5 +18,7 @@ namespace Project5.DTO
         public bool IsVerified { get; set; }
         public ICollection<PostDTO> Posts { get; set; }
         public ICollection<LanguageDTO> Languages { get; set; }
+
+
     }
 }
