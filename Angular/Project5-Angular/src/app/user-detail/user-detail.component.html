@@ -1,6 +1,6 @@
 
     <section class="cover-sec">
-        <img src="http://via.placeholder.com/1600x400" alt="">
+        <img src="../assets/background.png" alt="">
     </section>
 
 
@@ -13,14 +13,13 @@
                             <div class="main-left-sidebar">
                                 <div class="user_profile">
                                     <div class="user-pro-img">
-                                        <img src="http://placekitten.com/170/170" alt="">
+                                        <img [src]="user.profilePicture" alt="">
                                     </div><!--user-pro-img end-->
                                     
                                     <ul class="social_links" >
                                         <li *ngFor="let language of languages">
-                                            <span>{{currentUser.language}}</span>
-                                        </li>
-                                        
+                                            <span>{{language.name}}</span>
+                                        </li> 
                                     </ul>
                                 </div><!--user_profile end-->
                                 
@@ -29,11 +28,16 @@
                         <div class="col-lg-6">
                             <div class="main-ws-sec">
                                 <div class="user-tab-sec">
-                                    <h3>{{currentUser.name}}</h3>
+                                    <h3>{{user.name}}</h3>
                                     <div class="star-descp">
-                                        <span>.NET Developer</span>
-                                        
+                                        <span>.NET Developer</span>      
                                     </div><!--star-descp end-->
+                                    <div class="post-topbar">
+                                        <div class="post-st">
+                                            <input class="create-post" type="text" placeholder="Type your post here..."/>
+                                            <button class="btn btn-grad" type="submit">Make a post</button>
+                                        </div>
+                                    </div>
                                     <div class="tab-feed">
                                         <ul>
                                             <li data-tab="feed-dd" class="active">
@@ -88,38 +92,35 @@
                                     </div>
                                     <div class="pf-gallery">
                                         <ul>
-                                            <li><a href="#" title=""><img src="https://picsum.photos/70" alt=""></a></li>
-                                            <li><a href="#" title=""><img src="https://picsum.photos/70" alt=""></a></li>
-                                            <li><a href="#" title=""><img src="https://picsum.photos/70" alt=""></a></li>
-                                            <li><a href="#" title=""><img src="https://picsum.photos/70" alt=""></a></li>
-                                            <li><a href="#" title=""><img src="https://picsum.photos/70" alt=""></a></li>
-                                            <li><a href="#" title=""><img src="https://picsum.photos/70" alt=""></a></li>
-                                            <li><a href="#" title=""><img src="https://picsum.photos/70" alt=""></a></li>
-                                            <li><a href="#" title=""><img src="https://picsum.photos/70" alt=""></a></li>
-                                            <li><a href="#" title=""><img src="https://picsum.photos/70" alt=""></a></li>
-                                            <li><a href="#" title=""><img src="https://picsum.photos/70" alt=""></a></li>
-                                            <li><a href="#" title=""><img src="https://picsum.photos/70" alt=""></a></li>
-                                            <li><a href="#" title=""><img src="https://picsum.photos/70" alt=""></a></li>
+                                            <li *ngFor="let photo of photos">
+                                                <a href="#" title=""><img [src]="photo.url" alt=""></a>
+                                            </li>
                                         </ul>
                                     </div><!--pf-gallery end-->
                                 </div><!--widget-portfolio end-->
                             </div><!--right-sidebar end-->
+                            <button class="btn btn-grad" (click)="triggerModal(modalData)">Add photos</button>
+
+                            <ng-template #modalData let-modal>
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">Add photo pop-up</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                    <p>This feature is coming soon!</p>
+                                    <img class="hammy" src="../assets/hammy.gif"/>
+                                    <p class="info">For any further questions, contact Sebastiaan-Willem kesteloot.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+                            </div>
+                            </ng-template>
                         </div>
                     </div>
                 </div><!-- main-section-data end-->
             </div> 
         </div>
     </main>
-    <div *ngIf="user">
-        <h2>{{user.name | uppercase}} Details</h2>
-        <div>
-            <span>Id: </span> {{user.id}}
-        </div>
-        <div>
-            <label for="user-name">User name: </label>
-            <input id="user-name" [(ngModel)]="user.name" placeholder="Enter a name" />
-        </div>
-        <button (click)="goBack()">Back</button>
-        <button (click)="save()">save</button>
-    </div>
-<!-- </div> -->
+

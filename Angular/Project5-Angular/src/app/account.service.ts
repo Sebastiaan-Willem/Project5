@@ -10,7 +10,7 @@ import { User } from './user';
 })
 export class AccountService {
   baseUrl = 'https://localhost:44305/api/Account';
-  currentUser?: User;
+  currentUser?: Login;
  
   constructor(private http: HttpClient) { }
 
@@ -28,30 +28,23 @@ export class AccountService {
         { const user = response; 
           if(user)
           {
-            localStorage.setItem('user', JSON.stringify(user.name, user.token));
+            localStorage.setItem('user', JSON.stringify(user));
             this.setCurrentUser(user);
           }
         })
       );
   }
 
-  setCurrentUser(user: User){
+  setCurrentUser(user: Login){
     this.currentUser = user;
   }
 
-  getCurrentUser() : User{
-    if(this.currentUser){
-      return this.currentUser;
-    } else{
-      return {
-      id: -1,
-      name: "Lola",
-      token: 'fake-jwt-token',
-      language: "C#"
-    }
-    }
-    
-  }
+  // getCurrentUser(): User{
+  //   if(this.currentUser){
+  //     return this.currentUser;
+  //   }
+  // }  
+  //}
 
   logout(){
     localStorage.removeItem('user');
