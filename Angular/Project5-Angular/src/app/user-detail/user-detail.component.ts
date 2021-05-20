@@ -50,7 +50,7 @@ export class UserDetailComponent implements OnInit {
 
   getUser():void{
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.userService.getUser(1).subscribe(x => this.user = x);
+    this.userService.getUser(id).subscribe(x => this.user = x);
     this.languages = this.user.language;
     this.photos = this.user.photo;
   }

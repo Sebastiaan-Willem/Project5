@@ -39,12 +39,12 @@ export class AccountService {
     this.currentUser = user;
   }
 
-  // getCurrentUser(): User{
+  // getCurrentUser(): Login{
   //   if(this.currentUser){
   //     return this.currentUser;
   //   }
   // }  
-  //}
+  
 
   logout(){
     localStorage.removeItem('user');
