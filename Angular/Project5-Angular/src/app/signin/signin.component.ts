@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -9,7 +10,7 @@ import { AccountService } from '../account.service';
 export class SigninComponent implements OnInit {
   model: any = {};
   loggedIn: boolean = false;
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +21,11 @@ export class SigninComponent implements OnInit {
       this.loggedIn = true;
     }, error =>{
       console.log(error);
-    })
+    });
+
+    if(this.loggedIn){
+      this.router.navigate(['home']);
+    }
+    
   }
 }

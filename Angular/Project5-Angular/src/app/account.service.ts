@@ -1,9 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Login } from './login';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { User } from './user';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,13 @@ import { User } from './user';
 export class AccountService {
   baseUrl = 'https://localhost:44305/api/Account';
   currentUser?: Login;
+  user?: User;
  
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userService: UserService) { }
 
   register(model : any): Observable<any>{
     let url = `${this.baseUrl}/register`;
-    return this.http.post( url , model );
+    return this.http.post( url , model ).pipe(catchError(this.handleError));
   }
 
   login(model: any): Observable<any>{
@@ -30,6 +32,10 @@ export class AccountService {
           {
             localStorage.setItem('user', JSON.stringify(user));
             this.setCurrentUser(user);
+            if(this.currentUser){
+              this.setUser(this.currentUser.id);
+            }
+            
           }
         })
       );
@@ -39,6 +45,19 @@ export class AccountService {
     this.currentUser = user;
   }
 
+  setUser(id: number){
+    this.userService.getUser(id).subscribe(x => this.user = x);
+    console.log(this.user);
+  }
+
+  getUser(): any{
+    if(this.user){
+      return this.user;
+    }
+    else{
+      return{};
+    }
+  }
   // getCurrentUser(): Login{
   //   if(this.currentUser){
   //     return this.currentUser;
@@ -49,6 +68,19 @@ export class AccountService {
   logout(){
     localStorage.removeItem('user');
     this.currentUser = undefined;
+  }
+
+  handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error!';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side errors
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side errors
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    window.alert(errorMessage);
+    return throwError(errorMessage);
   }
 
 }

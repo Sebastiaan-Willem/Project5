@@ -18,10 +18,10 @@
             Please enter a password.
         </div>
         <div *ngIf="registerUser.get('password')?.hasError('minlength')" class="invalid-feedback">
-            Password must be at least 4 characters.
+            Password must be at least 8 characters.
         </div>
         <div *ngIf="registerUser.get('password')?.hasError('maxlength')" class="invalid-feedback">
-            Password can't be longer than 8 characters.
+            Password can't be longer than 16 characters.
         </div>
         <div *ngIf="validationErrors.length > 0">
             <ul class="test-danger">
@@ -36,6 +36,8 @@
         <button class="btn btn-grad mr-2" type="submit">Register</button>
     </div>
 </form>
+
+
 
 <p>Form value: {{registerUser.value | json}}</p>
 <p>Form status: {{registerUser.status | json}}</p>

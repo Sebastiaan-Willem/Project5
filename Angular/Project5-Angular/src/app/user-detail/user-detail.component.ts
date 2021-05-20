@@ -25,18 +25,17 @@ class ImageSnippet {
 })
 export class UserDetailComponent implements OnInit {
   closeModal?: string;
-  //currentUser: User = this.accountService.getCurrentUser();
+  currentUser: User = this.accountService.getUser();
   user: User ={
     id: -1,
-    name: "",
-    token: "nonsense",
-    language: [{id: -1, name: "C#"}],
-    photo: [{id: -1, url: ""}],
+    name: "Doesn't Exist",
+    languages: [{id: -1, name: "C#"}],
+    photos: [{id: -1, url: ""}],
     profilePicture: "https://placekitten.com/170/170",
   };
   posts: Post[] = [];
-  languages: Language[] = [];
-  photos: Photo[] = [];
+  languages: Language[] = this.currentUser.languages;
+  photos: Photo[] = this.currentUser.photos;
  
   selectedFile?: ImageSnippet;
   userUrl: string = "";
@@ -45,14 +44,6 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPosts();
-    this.getUser();
-  }
-
-  getUser():void{
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.userService.getUser(id).subscribe(x => this.user = x);
-    this.languages = this.user.language;
-    this.photos = this.user.photo;
   }
 
   getPosts():void{

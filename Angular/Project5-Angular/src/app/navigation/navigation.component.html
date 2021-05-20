@@ -9,25 +9,21 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link" routerLink="home">Home</a>
+            <a class="nav-link" routerLink="home" [hidden]="loggedIn">Home</a>
           </li>
           <li class="nav-item" >
-            <a class="nav-link" routerLink="detail/1" [hidden]="loggedIn">Profile</a> <!--change to !loggedIn-->
+            <a class="nav-link" routerLink="profile" [hidden]="loggedIn">Profile</a> <!--change to !loggedIn-->
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" routerLink="posts" [hidden]="loggedIn">Posts</a>
-          </li> -->
-          
-          <!-- <li class="nav-item">
-            <a class="nav-link" routerLink="register">Register</a>
-          </li> -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="settings" [hidden]="loggedIn">Settings</a> <!--change to !loggedIn-->
+          </li>
         </ul>
         <button class="btn btn-grad" (click)="logout()" [hidden]="loggedIn">Sign out</button>
-        <form #loginForm="ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off">
+        <!-- <form #loginForm="ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off">
             <input class="form-control me-2" name="username" [(ngModel)]="model.name" type="text" placeholder="UserName" />
             <input class="form-control me-2" name="password" [(ngModel)]="model.password" type="password" placeholder="Password" />
             <button class="btn btn-outline-success" type="submit" >Login</button>
-        </form>
+        </form> -->
       </div>
     </div>
   

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
 
 @Component({
@@ -9,21 +10,18 @@ import { AccountService } from '../account.service';
 export class NavigationComponent implements OnInit {
   model: any = {};
   loggedIn: boolean = false;
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
   }
-  login():void{
-    this.accountService.login(this.model)
-    .subscribe(x => {
-      this.loggedIn = true;
-    }, error =>{
-      console.log(error);
-    })
-  }
+
   logout(): void {
     this.accountService.logout();
     this.loggedIn = false;
+
+    if(!this.loggedIn){
+      this.router.navigate(['']);
+    }
   }
 
 }

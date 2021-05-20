@@ -4,8 +4,7 @@ import { Photo } from "./photo";
 export interface User {
     id: number;
     name: string;
-    token: string;
-    language: Language[];
-    photo: Photo[];
+    languages: Language[];
+    photos: Photo[];
     profilePicture: string;
 }
