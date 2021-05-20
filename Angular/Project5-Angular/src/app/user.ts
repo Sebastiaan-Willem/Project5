@@ -1,5 +1,6 @@
 import { Language } from "./language";
 import { Photo } from "./photo";
+import { Post } from "./post";
 
 export interface User {
     id: number;
@@ -7,4 +8,5 @@ export interface User {
     languages: Language[];
     photos: Photo[];
     profilePicture: string;
+    posts: Post[];
 }

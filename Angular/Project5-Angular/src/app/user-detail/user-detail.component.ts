@@ -31,6 +31,7 @@ export class UserDetailComponent implements OnInit {
     name: "Doesn't Exist",
     languages: [{id: -1, name: "C#"}],
     photos: [{id: -1, url: ""}],
+    posts:[{id: -1, title: "This is a nonsense title", content: "", userId: 1, isNSFW: true, user: this.currentUser}],
     profilePicture: "https://placekitten.com/170/170",
   };
   posts: Post[] = [];
