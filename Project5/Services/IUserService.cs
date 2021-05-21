@@ -8,8 +8,11 @@ namespace Project5.Services
     public interface IUserService
     {
         Task DeleteUserAsync(int id);
+
         Task<UserDTO> GetUserAsync(int id);
+
         Task<ICollection<UserDTO>> GetUsersAsync();
-        Task UpdateUserAsync(User user);
+
+        Task UpdateUserAsync(UserDTO user);
     }
 }

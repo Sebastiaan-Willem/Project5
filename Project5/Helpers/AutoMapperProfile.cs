@@ -8,18 +8,21 @@ using System.Threading.Tasks;
 
 namespace Project5.Helpers
 {
-    public class AutoMapperProfile: Profile
+    public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
         {
             CreateMap<User, UserDTO>().ForMember(
-                dest => dest.ProfilePicture, 
+                dest => dest.ProfilePicture,
                 options => options.MapFrom(
-                src => src.Photos.FirstOrDefault(x => x.IsProfilePicture).ImgUrl));
-            
-            CreateMap<Post, PostDTO>();
-            CreateMap<Language, LanguageDTO>();
-            CreateMap<Photo, PhotoDTO>();
+                src => src.Photos.FirstOrDefault(x => x.IsProfilePicture).ImgUrl))
+                .ReverseMap();
+            //.ForMember(x => x.Photos, y => y.Ignore())
+            //.ForMember(x => x.Languages, y => y.Ignore());
+
+            CreateMap<Post, PostDTO>().ReverseMap();
+            CreateMap<Language, LanguageDTO>().ReverseMap();
+            CreateMap<Photo, PhotoDTO>().ReverseMap();
         }
     }
 }

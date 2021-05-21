@@ -29,6 +29,8 @@ export class UserDetailComponent implements OnInit {
   user: User ={
     id: -1,
     name: "Doesn't Exist",
+    country: "France",
+    city: "Paris",
     languages: [{id: -1, name: "C#"}],
     photos: [{id: -1, url: ""}],
     profilePicture: "https://placekitten.com/170/170",

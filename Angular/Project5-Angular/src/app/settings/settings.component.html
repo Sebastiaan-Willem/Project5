@@ -4,28 +4,38 @@
         <div  class="notbar">
             <h4>User</h4>
             <p>Name: {{user.name | titlecase}}</p>
+            <input id="name" [(ngModel)]="user.name" placeholder="name">
+            <p>Country: {{user.country | titlecase}}</p>
+            <input id="country" [(ngModel)]="user.country" placeholder="country">
+            <p>City: {{user.city | titlecase}}</p>
+            <input id="city" [(ngModel)]="user.city" placeholder="city">
+           
             <div class="toggle-btn">
                 <a href="#" title=""><img src="images/up-btn.png" alt=""></a>
             </div>
         </div><!--notbar end-->
         <div class="notbar">
             <h4>Languages</h4>
+            <ul >
+                <li *ngFor="let language of user.languages">
+                    <span>{{language.name}}</span>
+                </li> 
+            </ul>
+
+
             <div *ngFor="let language of user.languages">
 
             <div class="toggle-btn">
                 <a href="#" title=""><img src="images/up-btn.png" alt=""></a>
             </div>
         </div><!--notbar end-->
-        <div class="notbar">
-            <h4>Pictures</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
-            <div class="toggle-btn">
-                <a href="#" title=""><img src="images/up-btn.png" alt=""></a>
-            </div>
+        <div class="user_profile">
+            <img [src]="user.profilePicture" alt="">
+        </div><!--user-pro-img end-->
         </div><!--notbar end-->
         <div class="save-stngs">
             <ul>
-                <li><button type="submit">Save Setting</button></li>
+                <li><button type="submit"(click)="saveChanges(user)">Save Setting</button></li>
                 <li><button type="submit">Restore Setting</button></li>
             </ul>
         </div><!--save-stngs end-->

@@ -10,5 +10,6 @@ namespace Project5.Repositories
         Task<User> GetUserAsync(int id);
         Task<List<User>> GetUsersAsync();
         Task UpdateUserAsync(User user);
+        Task UpdateUserValues(User user);
     }
 }

@@ -21,7 +21,7 @@ namespace Project5.Repositories
             var users = await _context.Users
                                  .Include(x => x.Posts)
                                  .Include(x => x.Languages)
-                                 .Include(x=>x.Photos)
+                                 .Include(x => x.Photos)
                                  .ToListAsync();
             return users;
         }
@@ -43,7 +43,6 @@ namespace Project5.Repositories
 
         public async Task DeleteUserAsync(int id)
         {
-
             User user = new User
             {
                 Id = id
@@ -56,6 +55,15 @@ namespace Project5.Repositories
         public async Task UpdateUserAsync(User user)
         {
             _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateUserValues(User user)
+        {
+            _context.Users.Attach(user);
+            _context.Entry(user).Property(x => x.Name).IsModified = true;
+            _context.Entry(user).Property(x => x.Country).IsModified = true;
+            _context.Entry(user).Property(x => x.City).IsModified = true;
             await _context.SaveChangesAsync();
         }
     }
