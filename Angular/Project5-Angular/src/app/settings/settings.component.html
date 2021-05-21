@@ -14,29 +14,35 @@
                 <a href="#" title=""><img src="images/up-btn.png" alt=""></a>
             </div>
         </div><!--notbar end-->
+
         <div class="notbar">
             <h4>Languages</h4>
             <ul >
                 <li *ngFor="let language of user.languages">
-                    <span>{{language.name}}</span>
+                    <span><p>{{language.name  | titlecase}}</p></span>
+                    <span><input id="languages" [(ngModel)]="language.name" placeholder="language"></span>
                 </li> 
             </ul>
+        </div>
+
+        <div class="notbar" >
+            <div>
+                <h4>Picture</h4>
+              <p><img [src]="user.profilePicture" alt=""></p>
+            </div><!--user-pro-img end-->
+        </div><!--notbar end-->
+
+        <div  class="notbar">
+            <h4>User</h4>
+            <p>Change Picture URL:</p>
+            <input id="profilePicture" [(ngModel)]="user.profilePicture" placeholder="New URL">
+        </div><!--notbar end-->
 
 
-            <div *ngFor="let language of user.languages">
-            
-            <div class="toggle-btn">
-                <a href="#" title=""><img src="images/up-btn.png" alt=""></a>
-            </div>
-        </div><!--notbar end-->
-        <div class="user_profile">
-            <img [src]="user.profilePicture" alt="">
-        </div><!--user-pro-img end-->
-        </div><!--notbar end-->
         <div class="save-stngs">
             <ul>
-                <li><button type="submit"(click)="saveChanges(user)">Save Setting</button></li>
-                <li><button type="submit">Restore Setting</button></li>
+                <li><button type="submit"(click)="saveChanges(user)">Save Settings</button></li>
+                <!--<li><button type="submit">Restore Setting</button></li>-->
             </ul>
         </div><!--save-stngs end-->
     

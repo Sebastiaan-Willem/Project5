@@ -64,6 +64,9 @@ namespace Project5.Repositories
             _context.Entry(user).Property(x => x.Name).IsModified = true;
             _context.Entry(user).Property(x => x.Country).IsModified = true;
             _context.Entry(user).Property(x => x.City).IsModified = true;
+            _context.Entry(user).Property(x => x.Languages).IsModified = true;
+            _context.Entry(user).Property(x => x.ProfilePicture).IsModified = true;
+
             await _context.SaveChangesAsync();
         }
     }
