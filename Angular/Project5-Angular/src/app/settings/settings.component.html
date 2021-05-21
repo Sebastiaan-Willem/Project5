@@ -11,6 +11,10 @@
         <div class="notbar">
             <h4>Languages</h4>
             <div *ngFor="let language of user.languages">
+                <span>
+                    {{language.name}}
+                </span>
+            </div>
 
             <div class="toggle-btn">
                 <a href="#" title=""><img src="images/up-btn.png" alt=""></a>
