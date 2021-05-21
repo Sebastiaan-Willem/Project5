@@ -1,7 +1,6 @@
-
-    <section class="cover-sec">
-        <img src="../assets/background.png" alt="">
-    </section>
+<section class="cover-sec">
+     <img src="../assets/background.png" alt="">
+ </section>
 
 
     <main>
@@ -13,11 +12,11 @@
                             <div class="main-left-sidebar">
                                 <div class="user_profile">
                                     <div class="user-pro-img">
-                                        <img [src]="user.profilePicture" alt="">
+                                        <img [src]="currentUser.profilePicture" alt="">
                                     </div><!--user-pro-img end-->
                                     
                                     <ul class="social_links" >
-                                        <li *ngFor="let language of languages">
+                                        <li *ngFor="let language of currentUser.languages">
                                             <span>{{language.name}}</span>
                                         </li> 
                                     </ul>
@@ -34,15 +33,18 @@
                                     </div><!--star-descp end-->
                                     <div class="post-topbar">
                                         <div class="post-st">
-                                            <input class="create-post" type="text" placeholder="Type your post here..."/>
-                                            <button class="btn btn-grad" type="submit">Make a post</button>
+                                            <input class="create-post" type="text" [(ngModel)]="addedPost.title" placeholder="Type your title here..."/>
+                                            <input class="create-post" type="text" [(ngModel)]="addedPost.content" placeholder="Type your post here..."/>
+                                            <label class="create-post">Is NSFW?</label>
+                                            <input class="create-post" type="checkbox" [(ngModel)]="addedPost.isNSFW"/>
+                                            <button class="btn btn-grad" type="submit" (click)="addPost(addedPost); addedPost.title=''; addedPost.content=''; addedPost.isNSFW=false; addedPost.userId=currentUser.id; addedPost.user= currentUser;">Make a post</button>
                                         </div>
                                     </div>
                                     <div class="tab-feed">
                                         <ul>
                                             <li data-tab="feed-dd" class="active">
                                                 <a href="#" title="">
-                                                    <img src="images/ic1.png" alt="">
+                                                    <img src="../assets/ic1.png" alt="">
                                                     <span>Feed</span>
                                                 </a>
                                             </li>
@@ -55,7 +57,7 @@
                                     <div class="posts">
                                         <ul class="post-list">
                                             <!-- NgFor => binding user/posts-->
-                                            <li *ngFor="let post of posts" >
+                                            <li *ngFor="let post of currentUser.posts" >
                                                 <div class="post-bar">
                                                     
                                                     <div class="job_descp">
@@ -66,7 +68,7 @@
                                                             <li><a href="#" title="">Languages => still need to bind</a></li>
                                                         </ul>
                                                         <div class="usy-name">
-                                                            <span><img src="images/clock.png" alt="">Time Created</span>
+                                                            <span><img src="../assets/clock.png" alt="">Time Created</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -88,12 +90,12 @@
                                 <div class="widget widget-portfolio">
                                     <div class="wd-heady">
                                         <h3>Photos</h3>
-                                        <img src="images/photo-icon.png" alt="">
+                                        <img src="../assets/photo-icon.png" alt="">
                                     </div>
                                     <div class="pf-gallery">
                                         <ul>
-                                            <li *ngFor="let photo of photos">
-                                                <a href="#" title=""><img [src]="photo.url" alt=""></a>
+                                            <li *ngFor="let photo of currentUser.photos">
+                                                <a href="#" title=""><img [src]="photo.imgUrl" alt=""></a>
                                             </li>
                                         </ul>
                                     </div><!--pf-gallery end-->
@@ -123,4 +125,3 @@
             </div> 
         </div>
     </main>
-

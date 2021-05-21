@@ -26,37 +26,39 @@ class ImageSnippet {
 export class UserDetailComponent implements OnInit {
   closeModal?: string;
   currentUser: User = this.accountService.getUser();
-  user: User ={
-    id: -1,
-    name: "Doesn't Exist",
-    languages: [{id: -1, name: "C#"}],
-    photos: [{id: -1, url: ""}],
-    posts:[{id: -1, title: "This is a nonsense title", content: "", userId: 1, isNSFW: true, user: this.currentUser}],
-    profilePicture: "https://placekitten.com/170/170",
-  };
-  posts: Post[] = [];
-  languages: Language[] = this.currentUser.languages;
-  photos: Photo[] = this.currentUser.photos;
+  // user: User ={
+  //   id: -1,
+  //   name: "Doesn't Exist",
+  //   languages: [{id: -1, name: "C#"}],
+  //   photos: [{id: -1, url: ""}],
+  //   posts:[{id: -1, title: "This is a nonsense title", content: "", userId: 1, isNSFW: true, user: this.currentUser}],
+  //   profilePicture: "https://placekitten.com/170/170",
+  // };
  
   selectedFile?: ImageSnippet;
-  userUrl: string = "";
-
-  constructor(private imageService: ImageService, private userService: UserService, private accountService: AccountService, private postService: PostService,private modalService: NgbModal, private location: Location, private route: ActivatedRoute) { }
+  addedPost: Post =
+  {
+    id: -1,
+    title:"string",
+    content:"string",
+    userId: this.currentUser.id,
+    isNSFW: true,
+    user: this.currentUser,
+}
+  constructor(private accountService: AccountService, private postService: PostService,private modalService: NgbModal, private location: Location, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getPosts();
+    // this.getPosts();
   }
 
-  getPosts():void{
-    this.postService.getPosts().subscribe(x => this.posts = x)
+  // getPosts():void{
+  //   this.postService.getPosts().subscribe(x => this.currentUser.posts = x)
+  // }
+
+  addPost(post: Post){
+    this.postService.addPost(post).subscribe(x => this.currentUser.posts.push(x));
   }
 
-  goBack(): void {
-    this.location.back();
-  }
-  save(): void {
-    this.userService.updateUser(this.user).subscribe(() => this.goBack());
-  }
   triggerModal(content : any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
