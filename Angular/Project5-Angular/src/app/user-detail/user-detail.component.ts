@@ -63,6 +63,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   deletePost(post: Post): void{
+    debugger;
     if(post.id){
       this.postService.deletePost(post.id).subscribe();
     }  

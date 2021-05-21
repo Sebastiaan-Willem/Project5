@@ -40,13 +40,15 @@ namespace Project5.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> AddPost(Post post)
         {
             await _service.AddPostAsync(post);
             return Created("", null);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult> DeletePost(int id)
         {
             await _service.DeletePostAsync(id);
@@ -55,6 +57,7 @@ namespace Project5.Controllers
         }
 
         [HttpPut]
+        [AllowAnonymous]
         public async Task<ActionResult> UpdatePost(Post post)
         {
             await _service.UpdatePostAsync(post);

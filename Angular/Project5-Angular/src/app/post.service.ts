@@ -8,9 +8,15 @@ import { Post } from './post';
 })
 export class PostService {
   private postsUrl = 'https://localhost:44305/api/post';
+  // httpOptions = {
+  //   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  // };
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem('user') || '{}').token}`
+    })
   };
+
   constructor(private http: HttpClient) { }
 
   getPosts(): Observable<Post[]>{
