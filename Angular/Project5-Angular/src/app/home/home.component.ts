@@ -29,6 +29,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPosts();
+    let data = localStorage.getItem('userData');
+    if(data){
+      this.currentUser = JSON.parse(data);
+    }
   }
 
   getPosts():void{

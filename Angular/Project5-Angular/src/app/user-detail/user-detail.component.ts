@@ -47,6 +47,10 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUser(this.currentUser.id).subscribe(x => this.currentUser = x);
+    let data = localStorage.getItem('userData');
+    if(data){
+      this.currentUser = JSON.parse(data);
+    }
     // this.getPosts();
   }
 

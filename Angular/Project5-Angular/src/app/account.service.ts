@@ -47,6 +47,7 @@ export class AccountService {
 
   setUser(id: number){
     this.userService.getUser(id).subscribe(x => this.user = x);
+    localStorage.setItem('userData', JSON.stringify(this.user));
     console.log(this.user);
   }
 
