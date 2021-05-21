@@ -5,8 +5,6 @@ import { Post } from "./post";
 export interface User {
     id: number;
     name: string;
-    country: string;
-    city: string;
     languages: Language[];
     photos: Photo[];
     profilePicture: string;

@@ -10,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class SettingsComponent implements OnInit {
 
-  user?: User; 
+  user?: User = this.accountService.getUser(); 
 
   constructor(
     private accountService: AccountService, 
