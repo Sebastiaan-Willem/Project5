@@ -17,6 +17,7 @@ namespace Project5.DTO
         public DateTime LastModified { get; set; } = DateTime.Now;
         public bool IsVerified { get; set; }
         public ICollection<PostDTO> Posts { get; set; }
+        public ICollection<PhotoDTO> Photos { get; set; }
         public ICollection<LanguageDTO> Languages { get; set; }
 
 

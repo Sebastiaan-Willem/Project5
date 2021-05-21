@@ -12,9 +12,14 @@ namespace Project5.Helpers
     {
         public AutoMapperProfile()
         {
-            CreateMap<User, UserDTO>();
+            CreateMap<User, UserDTO>().ForMember(
+                dest => dest.ProfilePicture, 
+                options => options.MapFrom(
+                src => src.Photos.FirstOrDefault(x => x.IsProfilePicture).ImgUrl));
+            
             CreateMap<Post, PostDTO>();
             CreateMap<Language, LanguageDTO>();
+            CreateMap<Photo, PhotoDTO>();
         }
     }
 }

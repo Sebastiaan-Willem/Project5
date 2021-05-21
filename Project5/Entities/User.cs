@@ -1,5 +1,4 @@
-﻿using Project5.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,6 +22,7 @@ namespace Project5.Entities
         public DateTime LastModified { get; set; } = DateTime.Now;
         public bool IsVerified { get; set; }
         public ICollection<Language> Languages { get; set; }
+        public ICollection<Photo> Photos { get; set; }
         public ICollection<Post> Posts { get; set; }
     }
 }
