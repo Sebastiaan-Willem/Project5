@@ -38,8 +38,8 @@ export class UserDetailComponent implements OnInit {
   selectedFile?: ImageSnippet;
   addedPost: Post =
   { 
-    title:"string",
-    content:"string",
+    title:"",
+    content:"",
     userId: this.currentUser.id,
     isNSFW: true,
     user: this.currentUser,

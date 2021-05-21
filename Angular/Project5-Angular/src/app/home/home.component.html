@@ -10,7 +10,7 @@
                                     <div class="user-profile">
                                         <div class="username-dt">
                                             <div class="usr-pic">
-                                                <img src="http://placekitten.com/100/100" alt="">
+                                                <img [src]="currentUser.profilePicture" alt="">
                                             </div>
                                         </div>
                                         <div class="user-specs">
@@ -55,7 +55,7 @@
                                                 <div class="post-bar">
                                                     <div class="post_topbar">
                                                         <div class="usy-dt">
-                                                            <img src="https://picsum.photos/50" alt="">
+                                                            <img [src]="post.user.profilePicture" alt="">
                                                             <div class="usy-name">
                                                                 <h3>{{post.user.name}}</h3>
                                                                 <span><img src="../assets/clock.png" alt="">Time Created</span>
@@ -70,11 +70,11 @@
                                                     <div class="job_descp">
                                                         <h3>{{post.title}}</h3>
                                                         <p>{{post.content}}</p>
-                                                        <ul class="skill-tags">
+                                                        <!-- <ul class="skill-tags">
                                                             <li *ngFor="let language of languages">
                                                                 <a href="#" title="">{{language.name}}</a>
                                                             </li>
-                                                        </ul>
+                                                        </ul> -->
                                                     </div>
                                                 </div>
                                             </li>
