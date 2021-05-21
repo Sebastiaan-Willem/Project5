@@ -31,9 +31,7 @@ export class RegisterComponent implements OnInit {
       console.error(error);
       this.validationErrors.push(error);
     });
-    if(!this.validationErrors){
       this.router.navigate(['signin']);
-    }
     
   }
 
