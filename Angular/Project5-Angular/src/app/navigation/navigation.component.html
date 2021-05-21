@@ -18,8 +18,8 @@
             <a class="nav-link" routerLink="settings" [hidden]="!loggedIn">Settings</a> <!--change to !loggedIn-->
           </li>
         </ul>
-        <button class="btn btn-grad" (click)="login()" [hidden]="loggedIn">Sign in</button>
-        <button class="btn btn-grad" (click)="logout()">Sign out</button>
+        <!-- <button class="btn btn-grad" (click)="login()" [hidden]="loggedIn">Sign in</button> -->
+        <button class="btn btn-grad" (click)="logout()" [hidden]="loggedIn">Sign out</button>
         <!-- <form #loginForm="ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off">
             <input class="form-control me-2" name="username" [(ngModel)]="model.name" type="text" placeholder="UserName" />
             <input class="form-control me-2" name="password" [(ngModel)]="model.password" type="password" placeholder="Password" />
