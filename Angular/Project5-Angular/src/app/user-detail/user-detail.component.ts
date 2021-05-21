@@ -42,7 +42,6 @@ export class UserDetailComponent implements OnInit {
     content:"",
     userId: this.currentUser.id,
     isNSFW: true,
-    user: this.currentUser,
 }
   constructor(private userService: UserService, private accountService: AccountService, private postService: PostService,private modalService: NgbModal, private location: Location, private route: ActivatedRoute) { }
 

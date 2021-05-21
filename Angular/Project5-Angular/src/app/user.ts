@@ -9,4 +9,7 @@ export interface User {
     photos: Photo[];
     profilePicture: string;
     posts: Post[];
+    city?: string;
+    country?: string;
+    createdAt?: Date;
 }

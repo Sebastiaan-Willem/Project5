@@ -37,7 +37,7 @@
                                             <input class="create-post" type="text" [(ngModel)]="addedPost.content" placeholder="Type your post here..."/>
                                             <label class="create-post">Is NSFW?</label>
                                             <input class="create-post" type="checkbox" [(ngModel)]="addedPost.isNSFW"/>
-                                            <button class="btn btn-grad" type="submit" (click)="addPost(addedPost); addedPost.title=''; addedPost.content=''; addedPost.isNSFW=false; addedPost.userId=currentUser.id; ">Make a post</button>
+                                            <button class="btn btn-grad" type="submit" (click)="addPost(addedPost); addedPost.title=''; addedPost.content=''; addedPost.isNSFW=false; addedPost.userId=currentUser.id; addedPost.user=currentUser ">Make a post</button>
                                         </div>
                                     </div>
                                     <div class="tab-feed">
@@ -66,10 +66,12 @@
                                                         <button class="btn btn-danger" (click)="deletePost(post)">Delete</button>
                                                         <p>{{post.content}}</p>
                                                         <ul class="skill-tags">
-                                                            <li><a href="#" title="">Languages => still need to bind</a></li>
+                                                            <li *ngFor="let language of currentUser.languages">
+                                                                <a href="#" title="">{{language.name}}</a>
+                                                            </li>
                                                         </ul>
                                                         <div class="usy-name">
-                                                            <span><img src="../assets/clock.png" alt="">Time Created</span>
+                                                            <span><img src="../assets/clock.png" alt="">{{post.createdAt}}</span>
                                                         </div>
                                                         
                                                     </div>

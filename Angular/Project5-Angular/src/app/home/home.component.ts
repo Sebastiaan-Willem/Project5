@@ -18,12 +18,11 @@ export class HomeComponent implements OnInit {
   languages: Language[] = this.currentUser.languages;
   photos: Photo[] = this.currentUser.photos;
 
-  @Input() selectedPost:Post = {
+  @Input() addedPost:Post = {
     title:"",
     content:"",
     userId: 1,
     isNSFW: true,
-    user: this.currentUser,
   };
 
   constructor(private postService:PostService, private accountService: AccountService, private userService: UserService) { }
@@ -38,9 +37,6 @@ export class HomeComponent implements OnInit {
 
   addPost(post: Post,){
     if (!post.title.trim()) { return; }
-    // this.currentUser.posts.push( post );
-    // this.userService.updateUser(this.currentUser).subscribe();
-    debugger;
     this.postService.addPost(post).subscribe(x => this.posts.push(x));
 
   }

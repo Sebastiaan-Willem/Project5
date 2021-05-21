@@ -6,5 +6,6 @@ export interface Post{
     content:string;
     userId: number;
     isNSFW: boolean;
-    user: User;
+    user?: User;
+    createdAt?: Date;
 }

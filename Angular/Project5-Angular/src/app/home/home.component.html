@@ -41,9 +41,9 @@
                                         <!-- <img src="http://via.placeholder.com/100x100" alt=""> -->
                                     </div>
                                     <div class="post-st">
-                                        <input class="create-post" for="new-title" [(ngModel)]="selectedPost.title" placeholder="Type your title here..."/>
-                                        <input class="create-post" for="new-post" [(ngModel)]="selectedPost.content"placeholder="Type your post here..."/>
-                                        <button class="btn btn-grad" type="submit" (click)="addPost(selectedPost); selectedPost.title=''; selectedPost.content=''">Make a post</button>
+                                        <input class="create-post" for="new-title" [(ngModel)]="addedPost.title" placeholder="Type your title here..."/>
+                                        <input class="create-post" for="new-post" [(ngModel)]="addedPost.content"placeholder="Type your post here..."/>
+                                        <button class="btn btn-grad" type="submit" (click)="addPost(addedPost); addedPost.title=''; addedPost.content=''; addedPost.isNSFW=false; addedPost.userId=currentUser.id; addedPost.user=currentUser ">Make a post</button>
                                     </div>
                                 </div>
                                 <div class="posts-section">
@@ -52,29 +52,29 @@
                                         <ul class="post-list">
                                             <!-- NgFor => binding user/posts-->
                                             <li *ngFor="let post of posts" >
-                                                <div class="post-bar">
+                                                <div class="post-bar" *ngIf="post.user">
                                                     <div class="post_topbar">
                                                         <div class="usy-dt">
                                                             <img [src]="post.user.profilePicture" alt="">
                                                             <div class="usy-name">
                                                                 <h3>{{post.user.name}}</h3>
-                                                                <span><img src="../assets/clock.png" alt="">Time Created</span>
+                                                                <span><img src="../assets/clock.png" alt="">{{post.createdAt | date}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="epi-sec">
                                                         <ul class="descp">
-                                                            <li><img src="../assets/icon9.png" alt=""><span>Location</span></li>
+                                                            <li><img src="../assets/icon9.png" alt=""><span>{{post.user.city}}, {{post.user.country}}</span></li>
                                                         </ul>
                                                     </div>
                                                     <div class="job_descp">
                                                         <h3>{{post.title}}</h3>
                                                         <p>{{post.content}}</p>
-                                                        <!-- <ul class="skill-tags">
-                                                            <li *ngFor="let language of languages">
+                                                        <ul class="skill-tags">
+                                                            <li *ngFor="let language of post.user.languages">
                                                                 <a href="#" title="">{{language.name}}</a>
                                                             </li>
-                                                        </ul> -->
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </li>
