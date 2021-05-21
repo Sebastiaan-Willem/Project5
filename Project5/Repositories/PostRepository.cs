@@ -19,6 +19,7 @@ namespace Project5.Repositories
         {
             return await _context.Posts
                                  .Include(x => x.User)
+                                    .ThenInclude(x => x.Photos)
                                  .ToListAsync();
         }
 
@@ -26,6 +27,7 @@ namespace Project5.Repositories
         {
             return await _context.Posts
                                  .Include(x => x.User)
+                                    .ThenInclude(x => x.Photos)
                                  .FirstOrDefaultAsync(x => x.Id == id);
         }
 

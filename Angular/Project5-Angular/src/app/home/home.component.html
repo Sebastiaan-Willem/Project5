@@ -55,7 +55,7 @@
                                                 <div class="post-bar" *ngIf="post.user">
                                                     <div class="post_topbar">
                                                         <div class="usy-dt">
-                                                            <img [src]="post.user.profilePicture" alt="">
+                                                            <img class="profile-img" [src]="post.user.profilePicture" alt="">
                                                             <div class="usy-name">
                                                                 <h3>{{post.user.name}}</h3>
                                                                 <span><img src="../assets/clock.png" alt="">{{post.createdAt | date}}</span>
@@ -81,11 +81,11 @@
                                         </ul>
                                     </div>
                                     <div class="process-comm">
-                                        <div class="spinner">
+                                        <!-- <div class="spinner">
                                             <div class="bounce1"></div>
                                             <div class="bounce2"></div>
                                             <div class="bounce3"></div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
