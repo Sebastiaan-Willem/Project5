@@ -26,38 +26,47 @@ class ImageSnippet {
 export class UserDetailComponent implements OnInit {
   closeModal?: string;
   currentUser: User = this.accountService.getUser();
-  user: User ={
-    id: -1,
-    name: "Doesn't Exist",
-    country: "France",
-    city: "Paris",
-    languages: [{id: -1, name: "C#"}],
-    photos: [{id: -1, url: ""}],
-    profilePicture: "https://placekitten.com/170/170",
-  };
-  posts: Post[] = [];
-  languages: Language[] = this.currentUser.languages;
-  photos: Photo[] = this.currentUser.photos;
- 
-  selectedFile?: ImageSnippet;
-  userUrl: string = "";
+  // user: User ={
+  //   id: -1,
+  //   name: "Doesn't Exist",
+  //   languages: [{id: -1, name: "C#"}],
+  //   photos: [{id: -1, url: ""}],
+  //   posts:[{id: -1, title: "This is a nonsense title", content: "", userId: 1, isNSFW: true, user: this.currentUser}],
+  //   profilePicture: "https://placekitten.com/170/170",
+  // };
 
-  constructor(private imageService: ImageService, private userService: UserService, private accountService: AccountService, private postService: PostService,private modalService: NgbModal, private location: Location, private route: ActivatedRoute) { }
+  selectedFile?: ImageSnippet;
+  addedPost: Post =
+  {
+    title:"",
+    content:"",
+    userId: this.currentUser.id,
+    isNSFW: true,
+}
+  constructor(private userService: UserService, private accountService: AccountService, private postService: PostService,private modalService: NgbModal, private location: Location, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getPosts();
+    this.userService.getUser(this.currentUser.id).subscribe(x => this.currentUser = x);
+    // this.getPosts();
   }
 
-  getPosts():void{
-    this.postService.getPosts().subscribe(x => this.posts = x)
+  // getPosts():void{
+  //   this.postService.getPosts().subscribe(x => this.currentUser.posts = x)
+  // }
+
+  addPost(post: Post){
+    this.postService.addPost(post).subscribe(x => this.currentUser.posts.push(x));
   }
 
-  goBack(): void {
-    this.location.back();
+  updatePost(){
   }
-  save(): void {
-    this.userService.updateUser(this.user).subscribe(() => this.goBack());
+
+  deletePost(post: Post): void{
+    if(post.id){
+      this.postService.deletePost(post.id).subscribe();
+    }
   }
+
   triggerModal(content : any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
@@ -74,9 +83,4 @@ export class UserDetailComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
-
 }
-
-
-
-

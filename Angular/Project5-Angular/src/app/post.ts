@@ -1,5 +1,11 @@
+import { User } from "./user";
+
 export interface Post{
-    id: number;
+    id?: number;
     title:string;
     content:string;
+    userId: number;
+    isNSFW: boolean;
+    user?: User;
+    createdAt?: Date;
 }

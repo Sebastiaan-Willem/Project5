@@ -1,5 +1,5 @@
 <div class="logo-div">
-    <img src="https://img-premium.flaticon.com/png/512/3190/3190461.png?token=exp=1621327171~hmac=e80f5d6477e3358cefef14c8ec3d5563" class="d-inline-block align-top logo" alt="">
+    <img src="../assets/logo.png" class="d-inline-block align-top logo" alt="">
 </div>
 <form [formGroup]="registerUser" (ngSubmit)="register()" autocomplete="off">
     <h2 class="text-center">Sign up</h2>
@@ -32,12 +32,12 @@
         </div>
     </div>
     <div class="form-group text-center">
-        <!-- <button [disabled]="!registerUser.valid" class="btn btn-success mr-2" type="submit">Register</button> -->
-        <button class="btn btn-grad mr-2" type="submit">Register</button>
+        <button [disabled]="!registerUser.valid" class="btn btn-grad mr-2" type="submit">Register</button>
+        <!-- <button class="btn btn-grad mr-2" type="submit">Register</button> -->
     </div>
 </form>
-
+<!-- 
 
 
 <p>Form value: {{registerUser.value | json}}</p>
-<p>Form status: {{registerUser.status | json}}</p>
+<p>Form status: {{registerUser.status | json}}</p> -->

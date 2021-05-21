@@ -24,4 +24,8 @@ export class NavigationComponent implements OnInit {
     }
   }
 
+  login():void{
+    this.router.navigate(['signin']);
+  }
+
 }
