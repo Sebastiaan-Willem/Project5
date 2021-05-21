@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   @Input() addedPost:Post = {
     title:"",
     content:"",
-    userId: 1,
+    userId: this.currentUser.id,
     isNSFW: true,
   };
 
