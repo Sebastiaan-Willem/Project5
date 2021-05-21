@@ -41,10 +41,10 @@ namespace Project5.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult> AddPost(Post post)
+        public async Task<ActionResult<PostDTO>> AddPost(Post post)
         {
             await _service.AddPostAsync(post);
-            return Created("", null);
+            return Created("", post);
         }
 
         [HttpDelete("{id}")]

@@ -25,7 +25,9 @@ class ImageSnippet {
 })
 export class UserDetailComponent implements OnInit {
   closeModal?: string;
-  currentUser: User = this.accountService.getUser();
+  currentUser: User = this.setCurrentUser();
+  
+  
   // user: User ={
   //   id: -1,
   //   name: "Doesn't Exist",
@@ -46,12 +48,19 @@ export class UserDetailComponent implements OnInit {
   constructor(private userService: UserService, private accountService: AccountService, private postService: PostService,private modalService: NgbModal, private location: Location, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.userService.getUser(this.currentUser.id).subscribe(x => this.currentUser = x);
+    
+    this.setCurrentUser();
+  }
+
+  setCurrentUser(): any {
     let data = localStorage.getItem('userData');
     if(data){
       this.currentUser = JSON.parse(data);
+      return this.currentUser;
     }
-    // this.getPosts();
+
+
+
   }
 
   // getPosts():void{
@@ -59,7 +68,12 @@ export class UserDetailComponent implements OnInit {
   // }
 
   addPost(post: Post){
+    //debugger;
     this.postService.addPost(post).subscribe(x => this.currentUser.posts.push(x));
+    this.postService.getPosts().subscribe(x => this.currentUser.posts = x)
+    console.log(this.currentUser)
+    //window.location.reload();
+    
   }
 
   updatePost(){

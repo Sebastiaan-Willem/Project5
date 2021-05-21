@@ -24,7 +24,12 @@ export class SigninComponent implements OnInit {
     });
 
     if(this.loggedIn){
+      
       this.router.navigate(['home']);
+      //dirty but it works:
+      setTimeout(()=>{
+        window.location.reload();
+      }, 100); 
     }
     
   }

@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
   constructor(private postService:PostService, private accountService: AccountService, private userService: UserService) { }
 
   ngOnInit(): void {
+    
     this.getPosts();
     let data = localStorage.getItem('userData');
     if(data){
@@ -35,13 +36,15 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  getPosts():void{
+  getPosts():void{    
     this.postService.getPosts().subscribe(x => this.posts = x)
   }
 
   addPost(post: Post,){
     if (!post.title.trim()) { return; }
     this.postService.addPost(post).subscribe(x => this.posts.push(x));
+    window.location.reload();
+    
 
   }
 }
