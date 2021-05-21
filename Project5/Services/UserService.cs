@@ -19,7 +19,7 @@ namespace Project5.Services
             _repo = repo;
             _mapper = mapper;
         }
-      
+
         public async Task<ICollection<UserDTO>> GetUsersAsync()
         {
             List<User> users = await _repo.GetUsersAsync();
@@ -36,15 +36,20 @@ namespace Project5.Services
 
         public async Task DeleteUserAsync(int id)
         {
-
             await _repo.DeleteUserAsync(id);
         }
 
-        public async Task UpdateUserAsync(User user)
+        public async Task UpdateUserAsync(UserDTO userDTO)
         {
-            await _repo.UpdateUserAsync(user);
+            try
+            {
+                var user = _mapper.Map<User>(userDTO);
+                await _repo.UpdateUserValues(user);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
-
-
     }
 }

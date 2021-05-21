@@ -31,7 +31,7 @@ namespace Project5.Controllers
             return Ok(users);
         }
 
-        [HttpGet ("{id}")]
+        [HttpGet("{id}")]
         [AllowAnonymous]
         public async Task<ActionResult<UserDTO>> GetUser(int id)
         {
@@ -40,17 +40,19 @@ namespace Project5.Controllers
         }
 
         [HttpDelete]
+        [AllowAnonymous]
         public async Task<ActionResult> DeleteUser(int id)
         {
             await _service.DeleteUserAsync(id);
-            return Ok("User deleted");            
+            return Ok("User deleted");
         }
 
         [HttpPut]
-        public async Task<ActionResult> UpdateUser(User user)
+        [AllowAnonymous]
+        public async Task<ActionResult> UpdateUser(UserDTO userDTO)
         {
-            await _service.UpdateUserAsync(user);
-            return Ok("User is up to date"); 
+            await _service.UpdateUserAsync(userDTO);
+            return Ok("User is up to date");
         }
     }
 }

@@ -10,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class SettingsComponent implements OnInit {
 
-  user?: User; 
+  user?: User = this.accountService.getUser(); 
 
   constructor(
     private accountService: AccountService, 
@@ -21,9 +21,15 @@ export class SettingsComponent implements OnInit {
   }
 
   setUser() {
-    //this.user = this.accountService.getUser();
-    this.userService.getUser(1).subscribe(x => this.user = x);
+    this.user = this.accountService.getUser();
+    //this.userService.getUser(1).subscribe(x => this.user = x);
     console.log(this.user);
   }
 
+  saveChanges(user: User) {
+    debugger;
+    this.userService.updateUser(user).subscribe(x => this.user = x);
+  }
+
 }
+

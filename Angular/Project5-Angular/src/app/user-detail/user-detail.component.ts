@@ -34,10 +34,10 @@ export class UserDetailComponent implements OnInit {
   //   posts:[{id: -1, title: "This is a nonsense title", content: "", userId: 1, isNSFW: true, user: this.currentUser}],
   //   profilePicture: "https://placekitten.com/170/170",
   // };
- 
+
   selectedFile?: ImageSnippet;
   addedPost: Post =
-  { 
+  {
     title:"",
     content:"",
     userId: this.currentUser.id,
@@ -59,14 +59,13 @@ export class UserDetailComponent implements OnInit {
   }
 
   updatePost(){
-
   }
 
   deletePost(post: Post): void{
     debugger;
     if(post.id){
       this.postService.deletePost(post.id).subscribe();
-    }  
+    }
   }
 
   triggerModal(content : any) {
@@ -85,9 +84,4 @@ export class UserDetailComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
-
 }
-
-
-
-
