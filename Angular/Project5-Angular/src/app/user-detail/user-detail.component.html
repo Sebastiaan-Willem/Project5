@@ -66,7 +66,8 @@
                                                         <button class="btn btn-danger" (click)="deletePost(post)">Delete</button>
                                                         <p>{{post.content}}</p>
                                                         <ul class="skill-tags">
-                                                            <li><a href="#" title="">Languages => still need to bind</a></li>
+                                                            <li *ngFor="let language of currentUser.languages">
+                                                                <a href="#" title="">{{language.name}}</a></li>
                                                         </ul>
                                                         <div class="usy-name">
                                                             <span><img src="../assets/clock.png" alt="">Time Created</span>

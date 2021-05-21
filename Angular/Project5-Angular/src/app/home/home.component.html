@@ -43,7 +43,7 @@
                                     <div class="post-st">
                                         <input class="create-post" for="new-title" [(ngModel)]="selectedPost.title" placeholder="Type your title here..."/>
                                         <input class="create-post" for="new-post" [(ngModel)]="selectedPost.content"placeholder="Type your post here..."/>
-                                        <button class="btn btn-grad" type="submit" (click)="addPost(selectedPost); selectedPost.title=''; selectedPost.content=''">Make a post</button>
+                                        <button class="btn btn-grad" type="submit" (click)="addPost(selectedPost);  selectedPost.title=''; selectedPost.content=''; selectedPost.isNSFW=false; selectedPost.userId=currentUser.id; ">Make a post</button>
                                     </div>
                                 </div>
                                 <div class="posts-section">
@@ -58,23 +58,23 @@
                                                             <img src="https://picsum.photos/50" alt="">
                                                             <div class="usy-name">
                                                                 <h3>{{post.user.name}}</h3>
-                                                                <span><img src="../assets/clock.png" alt="">Time Created</span>
+                                                                <span><img src="../assets/clock.png" alt="">{{post.createdAt | date}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="epi-sec">
                                                         <ul class="descp">
-                                                            <li><img src="../assets/icon9.png" alt=""><span>Location</span></li>
+                                                            <li><img src="../assets/icon9.png" alt=""><span>{{post.user.city}}</span></li>
                                                         </ul>
                                                     </div>
                                                     <div class="job_descp">
                                                         <h3>{{post.title}}</h3>
                                                         <p>{{post.content}}</p>
-                                                        <ul class="skill-tags">
-                                                            <li *ngFor="let language of languages">
+                                                        <!-- <ul class="skill-tags">
+                                                            <li *ngFor="let language of post.user.languages">
                                                                 <a href="#" title="">{{language.name}}</a>
                                                             </li>
-                                                        </ul>
+                                                        </ul> -->
                                                     </div>
                                                 </div>
                                             </li>

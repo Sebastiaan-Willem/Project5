@@ -15,8 +15,6 @@ import { UserService } from '../user.service';
 export class HomeComponent implements OnInit {
   posts: Post[] = [];
   currentUser: User = this.accountService.getUser();
-  languages: Language[] = this.currentUser.languages;
-  photos: Photo[] = this.currentUser.photos;
 
   @Input() selectedPost:Post = {
     title:"",
@@ -33,14 +31,11 @@ export class HomeComponent implements OnInit {
   }
 
   getPosts():void{
-    this.postService.getPosts().subscribe(x => this.posts = x)
+    this.postService.getPosts().subscribe(x => this.posts = x);
   }
 
   addPost(post: Post,){
     if (!post.title.trim()) { return; }
-    // this.currentUser.posts.push( post );
-    // this.userService.updateUser(this.currentUser).subscribe();
-    debugger;
     this.postService.addPost(post).subscribe(x => this.posts.push(x));
 
   }
