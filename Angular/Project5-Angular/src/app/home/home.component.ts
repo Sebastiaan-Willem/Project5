@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
   photos: Photo[] = this.currentUser.photos;
 
   @Input() selectedPost:Post = {
-    id:1,
     title:"",
     content:"",
     userId: 1,

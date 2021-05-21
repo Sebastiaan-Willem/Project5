@@ -37,17 +37,17 @@ export class UserDetailComponent implements OnInit {
  
   selectedFile?: ImageSnippet;
   addedPost: Post =
-  {
-    id: -1,
+  { 
     title:"string",
     content:"string",
     userId: this.currentUser.id,
     isNSFW: true,
     user: this.currentUser,
 }
-  constructor(private accountService: AccountService, private postService: PostService,private modalService: NgbModal, private location: Location, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private accountService: AccountService, private postService: PostService,private modalService: NgbModal, private location: Location, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.userService.getUser(this.currentUser.id).subscribe(x => this.currentUser = x);
     // this.getPosts();
   }
 
@@ -57,6 +57,16 @@ export class UserDetailComponent implements OnInit {
 
   addPost(post: Post){
     this.postService.addPost(post).subscribe(x => this.currentUser.posts.push(x));
+  }
+
+  updatePost(){
+
+  }
+
+  deletePost(post: Post): void{
+    if(post.id){
+      this.postService.deletePost(post.id).subscribe();
+    }  
   }
 
   triggerModal(content : any) {
