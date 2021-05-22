@@ -40,17 +40,7 @@
                                             <button class="btn btn-grad" type="submit" (click)="addPost(addedPost); addedPost.title=''; addedPost.content=''; addedPost.isNSFW=false; addedPost.userId=currentUser.id; addedPost.user=currentUser ">Make a post</button>
                                         </div>
                                     </div>
-                                    <div class="tab-feed">
-                                        <ul>
-                                            <li data-tab="feed-dd" class="active">
-                                                <a href="#" title="">
-                                                    <img src="../assets/ic1.png" alt="">
-                                                    <span>Feed</span>
-                                                </a>
-                                            </li>
-                                            
-                                        </ul>
-                                    </div><!-- tab-feed end-->
+                                    
                                 </div><!--user-tab-sec end-->
                                 <div class="posts-section">
 
@@ -61,18 +51,36 @@
                                                 <div class="post-bar">
                                                     
                                                     <div class="job_descp">
-                                                        <h3>{{post.title}}</h3>
-                                                        <!-- <button class="btn btn-warning" (click)="updatePost()">Edit</button> -->
-                                                        <button class="btn btn-danger" (click)="deletePost(post)">Delete</button>
-                                                        <p>{{post.content}}</p>
-                                                        <ul class="skill-tags">
-                                                            <li *ngFor="let language of currentUser.languages">
-                                                                <a href="#" title="">{{language.name}}</a>
-                                                            </li>
-                                                        </ul>
-                                                        <div class="usy-name">
-                                                            <span><img src="../assets/clock.png" alt="">{{post.createdAt | date}}</span>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <h3>{{post.title}}</h3>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="usy-name">
+                                                                    <span><img src="../assets/clock.png" alt="">{{post.createdAt | date}}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <button class="btn btn-danger" (click)="deletePost(post)">Delete</button>
+                                                            </div>
                                                         </div>
+                                                        <div class="row post-content">
+                                                            <p>{{post.content}}</p>                                                            
+                                                        </div>
+                                                        <div class="row">
+                                                                <ul class="skill-tags">
+                                                                    <li *ngFor="let language of currentUser.languages">
+                                                                        <a href="#" title="">{{language.name}}</a>
+                                                                    </li>
+                                                                </ul>
+                                                        </div>        
+                                                               
+                                                                
+                                                                
+                                                                
+                                                        
+                                                        
+                                                        
                                                         
                                                     </div>
                                                 </div>
