@@ -1,8 +1,19 @@
+<section class="cover-sec">
+    <img src="../assets/background.png" alt="">
+</section>
+
 <div *ngIf="user" class="acc-setting">
-    <h3>Account Setting</h3>
+    <div class="notbar">
+        <h3>Profile picture</h3>
+        <div class="user-pro-img">
+            <img class="profile-img" [src]="user.profilePicture" alt="">
+        </div><!--user-pro-img end-->        
+    </div>
+      
     
+   
         <div  class="notbar">
-            <h4>User</h4>
+            <h4>User Information</h4>
             <p>Name: {{user.name | titlecase}}</p>
             <input id="name" [(ngModel)]="user.name" placeholder="name">
             <p>Country: {{user.country | titlecase}}</p>
@@ -21,22 +32,12 @@
                     <span>{{language.name}}</span>
                 </li> 
             </ul>
-
-
-            <div *ngFor="let language of user.languages">
-            
-            <div class="toggle-btn">
-                <a href="#" title=""><img src="images/up-btn.png" alt=""></a>
-            </div>
-        </div><!--notbar end-->
-        <div class="user_profile">
-            <img [src]="user.profilePicture" alt="">
-        </div><!--user-pro-img end-->
+        
         </div><!--notbar end-->
         <div class="save-stngs">
             <ul>
                 <li><button type="submit"(click)="saveChanges(user)">Save Setting</button></li>
-                <li><button type="submit">Restore Setting</button></li>
+                
             </ul>
         </div><!--save-stngs end-->
     

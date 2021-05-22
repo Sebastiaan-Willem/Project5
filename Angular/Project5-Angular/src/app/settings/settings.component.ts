@@ -17,18 +17,30 @@ export class SettingsComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
+    this.updateLocalStorage();
     this.setUser();
   }
 
-  setUser() {
-    this.user = this.accountService.getUser();
-    //this.userService.getUser(1).subscribe(x => this.user = x);
-    console.log(this.user);
+  setUser(): any {
+    let data = localStorage.getItem('userData');
+    if(data){
+      this.user = JSON.parse(data);
+      return this.user;
+    }
+  }
+
+  updateLocalStorage(){
+    if(this.user)
+    {
+      this.userService.getUser(this.user.id)
+      .subscribe(x => 
+        localStorage.setItem('userData', JSON.stringify(x)));
+    }
   }
 
   saveChanges(user: User) {
-    debugger;
-    this.userService.updateUser(user).subscribe(x => this.user = x);
+    
+    this.userService.updateUser(user).subscribe();
   }
 
 }
