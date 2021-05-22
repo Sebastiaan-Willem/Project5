@@ -10,6 +10,7 @@ import { Language } from '../language';
 import { Photo } from '../photo';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ImageService } from '../image.service';
+import { windowTime } from 'rxjs/operators';
 
 class ImageSnippet {
   pending: boolean = false;
@@ -26,29 +27,20 @@ class ImageSnippet {
 export class UserDetailComponent implements OnInit {
   closeModal?: string;
   currentUser: User = this.setCurrentUser();
-  
-  
-  // user: User ={
-  //   id: -1,
-  //   name: "Doesn't Exist",
-  //   languages: [{id: -1, name: "C#"}],
-  //   photos: [{id: -1, url: ""}],
-  //   posts:[{id: -1, title: "This is a nonsense title", content: "", userId: 1, isNSFW: true, user: this.currentUser}],
-  //   profilePicture: "https://placekitten.com/170/170",
-  // };
-
+ 
   selectedFile?: ImageSnippet;
   addedPost: Post =
   {
     title:"",
     content:"",
     userId: this.currentUser.id,
-    isNSFW: true,
+    isNSFW: false,
 }
   constructor(private userService: UserService, private accountService: AccountService, private postService: PostService,private modalService: NgbModal, private location: Location, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     
+    this.updateLocalStorage();
     this.setCurrentUser();
   }
 
@@ -58,32 +50,30 @@ export class UserDetailComponent implements OnInit {
       this.currentUser = JSON.parse(data);
       return this.currentUser;
     }
+  }
 
-
+  addPost(post: Post){
+    if (!post.title.trim()) { return; }
+    this.postService.addPost(post).subscribe(x => this.currentUser.posts.push(x));
 
   }
 
-  // getPosts():void{
-  //   this.postService.getPosts().subscribe(x => this.currentUser.posts = x)
-  // }
-
-  addPost(post: Post){
-    //debugger;
-    this.postService.addPost(post).subscribe(x => this.currentUser.posts.push(x));
-    this.postService.getPosts().subscribe(x => this.currentUser.posts = x)
-    console.log(this.currentUser)
-    //window.location.reload();
-    
+  updateLocalStorage(){
+    if(this.currentUser)
+    {
+      this.userService.getUser(this.currentUser.id)
+      .subscribe(x => 
+        localStorage.setItem('userData', JSON.stringify(x)));
+    }
   }
 
   updatePost(){
   }
 
-  deletePost(post: Post): void{
-    debugger;
+  deletePost(post: Post): void{   
     if(post.id){
-      this.postService.deletePost(post.id).subscribe();
-    }
+      this.postService.deletePost(post.id).subscribe(x => window.location.reload());      
+    }    
   }
 
   triggerModal(content : any) {

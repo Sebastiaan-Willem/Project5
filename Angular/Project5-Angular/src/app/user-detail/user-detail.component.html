@@ -62,7 +62,7 @@
                                                     
                                                     <div class="job_descp">
                                                         <h3>{{post.title}}</h3>
-                                                        <button class="btn btn-warning" (click)="updatePost()">Edit</button>
+                                                        <!-- <button class="btn btn-warning" (click)="updatePost()">Edit</button> -->
                                                         <button class="btn btn-danger" (click)="deletePost(post)">Delete</button>
                                                         <p>{{post.content}}</p>
                                                         <ul class="skill-tags">
@@ -71,7 +71,7 @@
                                                             </li>
                                                         </ul>
                                                         <div class="usy-name">
-                                                            <span><img src="../assets/clock.png" alt="">{{post.createdAt}}</span>
+                                                            <span><img src="../assets/clock.png" alt="">{{post.createdAt | date}}</span>
                                                         </div>
                                                         
                                                     </div>

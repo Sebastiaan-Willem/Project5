@@ -14,7 +14,7 @@ import { UserService } from '../user.service';
 })
 export class HomeComponent implements OnInit {
   posts: Post[] = [];
-  currentUser: User = this.accountService.getUser();
+  currentUser: User = this.setCurrentUser();
   languages: Language[] = this.currentUser.languages;
   photos: Photo[] = this.currentUser.photos;
 
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     title:"",
     content:"",
     userId: this.currentUser.id,
-    isNSFW: true,
+    isNSFW: false,
   };
 
   constructor(private postService:PostService, private accountService: AccountService, private userService: UserService) { }
@@ -34,7 +34,18 @@ export class HomeComponent implements OnInit {
     if(data){
       this.currentUser = JSON.parse(data);
     }
+    // this.updateLocalStorage();
+    // this.setCurrentUser();
   }
+
+  setCurrentUser(): any {
+    let data = localStorage.getItem('userData');
+    if(data){
+      this.currentUser = JSON.parse(data);
+      return this.currentUser;
+    }
+  }
+
 
   getPosts():void{    
     this.postService.getPosts().subscribe(x => this.posts = x)
@@ -43,8 +54,15 @@ export class HomeComponent implements OnInit {
   addPost(post: Post,){
     if (!post.title.trim()) { return; }
     this.postService.addPost(post).subscribe(x => this.posts.push(x));
-    window.location.reload();
-    
+    //window.location.reload();
+  }
 
+  updateLocalStorage(){
+    if(this.currentUser)
+    {
+      this.userService.getUser(this.currentUser.id)
+      .subscribe(x => 
+        localStorage.setItem('userData', JSON.stringify(x)));
+    }
   }
 }
