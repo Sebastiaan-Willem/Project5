@@ -1,0 +1,53 @@
+
+PROJECT 5: Andreas, Emma, Joyce, Seba
+*****************************************************************
+
+KNOWN ISSUES:
+
+- 2x Login knop induwen
+- pagina (soms meermaals) refreshen/naar andere pagina gaan om geupdate data te zien te krijgen 
+
+
+
+-------------------------------------
+SQLScript om nieuwe user met data te seeden:
+-------------------------------------
+
+
+--Nieuwe User aanmaken via register
+--Userdata (country/city) kan aangepast (& toegevoegd) worden in app
+--Posts kan je zelf aanmaken en verwijderen in app
+
+-- LANGUAGES
+
+insert into LanguageUser
+(LanguagesId, UsersId)
+VALUES 
+(1,1),(2,1),(8,1),(5,1)
+  
+-- PHOTOS
+
+ INSERT INTO [dbo].[Photos]
+  ( 
+   [ImgUrl], [UserId], [IsProfilePicture]
+  )
+  VALUES
+  ( 
+   'http://placeimg.com/400/400/animals', 1, 0
+  ),
+  ( 
+   'http://placeimg.com/400/400/people', 1, 1
+  ),
+  ( 
+   'http://placeimg.com/400/400/any', 1, 0
+  ),
+  (
+   'http://placeimg.com/400/400/architecture', 1, 0
+  ),
+  (
+   'http://placeimg.com/400/400/nature', 1, 0
+  ),
+  ( 
+   'http://placeimg.com/400/400/tech', 1, 0
+  )  
+  GO
