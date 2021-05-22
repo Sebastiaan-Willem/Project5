@@ -14,7 +14,7 @@ import { UserService } from '../user.service';
 })
 export class HomeComponent implements OnInit {
   posts: Post[] = [];
-  currentUser: User = this.setCurrentUser();
+  currentUser: User = this.accountService.getUser();
   languages: Language[] = this.currentUser.languages;
   photos: Photo[] = this.currentUser.photos;
 
