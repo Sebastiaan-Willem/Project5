@@ -35,8 +35,11 @@
                                         <div class="post-st">
                                             <input class="create-post" type="text" [(ngModel)]="addedPost.title" placeholder="Type your title here..."/>
                                             <input class="create-post" type="text" [(ngModel)]="addedPost.content" placeholder="Type your post here..."/>
-                                            <label class="create-post">Is NSFW?</label>
-                                            <input class="create-post" type="checkbox" [(ngModel)]="addedPost.isNSFW"/>
+                                            <div class="custom-checkbox">
+                                                <input class="create-post" type="checkbox" [(ngModel)]="addedPost.isNSFW"/>
+                                                <label class="create-post">Is NSFW?</label>                                            
+                                            </div>
+                                            
                                             <button class="btn btn-grad" type="submit" (click)="addPost(addedPost); addedPost.title=''; addedPost.content=''; addedPost.isNSFW=false; addedPost.userId=currentUser.id; addedPost.user=currentUser ">Make a post</button>
                                         </div>
                                     </div>
